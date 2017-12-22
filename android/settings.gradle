@@ -1,0 +1,5 @@
+rootProject.name = 'RNAgoraExample'
+include ':react-native-agoraio'
+project(':react-native-agoraio').projectDir = new File(rootProject.projectDir, '../../react-native-agora.git/android')
+
+include ':app'
