@@ -17,7 +17,7 @@ import {
 
 const {width} = Dimensions.get('window');
 
-import {RtcEngine, AgoraView} from 'react-native-agora'
+import {RtcEngine, AgoraView} from 'react-native-agoraio'
 
 export default class RNAgoraExample extends Component {
 
@@ -44,12 +44,10 @@ export default class RNAgoraExample extends Component {
     }
 
     componentDidMount() {
-        // 预览
-        // RtcEngine.startPreview();
         // 加入房间，该方法让用户加入通话频道，在同一个频道内的用户可以互相通话，多个用户加入同一个频道，可以群聊。同一个频道里不能出现两个相同的UID，请保证传入的 UID 不相同。
         RtcEngine.joinChannel('00001', 0);//0:系统自动分配
         // 启用说话者音量提示
-        RtcEngine.enableAudioVolumeIndication(500, 3);
+        // RtcEngine.enableAudioVolumeIndication(500, 3);
 
         //所有的原生通知统一管理
         RtcEngine.eventEmitter({
@@ -82,10 +80,20 @@ export default class RNAgoraExample extends Component {
             },
             onAudioVolumeIndication: (data) => {
                 console.log("onAudioVolumeIndication:\n" + data);
+                // 音量提示回调
+
             },
             onUserJoined: (data) => {
                 console.log("onUserJoined:\n" + data);
                 // 有人来了!
+            },
+            onLeaveChannel: (data) => {
+                console.log("onLeaveChannel:\n" + data);
+                // 离开频道
+            },
+            onWarning: (data) => {
+                console.log("onWarning:\n" + data);
+                // 发生警告信息
             },
             onError: (data) => {
                 console.log("onError:\n" + data);
@@ -140,7 +148,7 @@ export default class RNAgoraExample extends Component {
                 <View style={styles.absView}>
                     <View style={styles.videoView}>
                         {remotes.map((v, k) => {
-                            console.log("remotes k:"+k+" v:"+v)
+                            console.log("remotes k:" + k + " v:" + v)
                             return (
                                 <AgoraView
                                     style={styles.remoteView}

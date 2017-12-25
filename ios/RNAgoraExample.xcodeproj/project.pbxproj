@@ -1217,6 +1217,7 @@
 					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/**",
 				);
 				INFOPLIST_FILE = RNAgoraExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/libs\"";
 				OTHER_LDFLAGS = (
@@ -1243,6 +1244,7 @@
 					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/**",
 				);
 				INFOPLIST_FILE = RNAgoraExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/libs\"";
 				OTHER_LDFLAGS = (
