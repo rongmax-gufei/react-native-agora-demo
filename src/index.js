@@ -37,7 +37,7 @@ export default class RNAgoraExample extends Component {
             appid: '858c0ae5d2574d6884a257c912b198c0',//控制台申请
             channelProfile: 1,//频道模式,1:直播互动
             videoProfile: 40,//640x480(resolution)、15(fps)、500(kbps)
-            clientRole: 1,//1:Broadcaster,2:Audience
+            clientRole: 1,//1:Broadcaster,2:Audience，实现双向语音通话设置角色为主播即可
             swapWidthAndHeight: true
         };
         RtcEngine.init(options);
