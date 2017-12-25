@@ -9,7 +9,6 @@
   "dependencies": {
     "react": "16.0.0-alpha.12",
     "react-native": "^0.51.0",
-    "react-native-agora": "^1.0.8",
     "react-native-agoraio": "^1.10.0"
   },
   "devDependencies": {
