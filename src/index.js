@@ -4,15 +4,15 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
     TouchableOpacity,
     Image,
-    Dimensions
+    Dimensions,
+    Modal
 } from 'react-native';
 
 const {width} = Dimensions.get('window');
@@ -26,8 +26,13 @@ export default class RNAgoraExample extends Component {
         this.state = {
             remotes: [],
             isJoinSuccess: false,
-            isSpeaker: false,
-            isMute: false
+            isSpeaker: true,
+            isMute: false,
+            isCameraTorch: false,
+            disableVideo: true,
+            isHideButtons: false,
+            visible: false,
+            selectUid: undefined
         };
     }
 
@@ -44,15 +49,22 @@ export default class RNAgoraExample extends Component {
     }
 
     componentDidMount() {
-        // 加入房间，该方法让用户加入通话频道，在同一个频道内的用户可以互相通话，多个用户加入同一个频道，可以群聊。同一个频道里不能出现两个相同的UID，请保证传入的 UID 不相同。
-        RtcEngine.joinChannel('00001', 0);//0:系统自动分配
+
+        // 当前版本号
+        RtcEngine.getSdkVersion((version) => {
+            console.log(version)
+        });
+
+        //加入房间
+        RtcEngine.joinChannel();
+
         // 启用说话者音量提示
         RtcEngine.enableAudioVolumeIndication(500, 3);
 
         //所有的原生通知统一管理
         RtcEngine.eventEmitter({
             onFirstRemoteVideoDecoded: (data) => {
-                console.log("onFirstRemoteVideoDecoded:\n" + data);
+                console.log(data);
                 // 有远程视频加入 返回重要的  uid  AgoraView 根据uid 来设置remoteUid值
                 const {remotes} = this.state;
                 const newRemotes = [...remotes];
@@ -64,53 +76,55 @@ export default class RNAgoraExample extends Component {
                 this.setState({remotes: newRemotes});
             },
             onUserOffline: (data) => {
-                console.log("onUserOffline:\n" + data);
+                console.log(data);
                 // 有人离开了！
                 const {remotes} = this.state;
                 const newRemotes = remotes.filter(uid => uid !== data.uid);
                 this.setState({remotes: newRemotes});
             },
             onJoinChannelSuccess: (data) => {
-                console.log("onJoinChannelSuccess:\n" + data);
+                // 加入房间成功
+                console.log(data);
+                // 开启摄像头预览
                 RtcEngine.startPreview();
-                // 加入房间成功!
+
                 this.setState({
                     isJoinSuccess: true
                 });
             },
             onAudioVolumeIndication: (data) => {
-                console.log("onAudioVolumeIndication:\n" + data);
-                // 音量提示回调
-
+                // 声音回调
+                console.log(data, '-----');
             },
             onUserJoined: (data) => {
-                console.log("onUserJoined:\n" + data);
+                console.log(data);
                 // 有人来了!
             },
-            onLeaveChannel: (data) => {
-                console.log("onLeaveChannel:\n" + data);
-                // 离开频道
-            },
-            onWarning: (data) => {
-                console.log("onWarning:\n" + data);
-                // 发生警告信息
-            },
             onError: (data) => {
-                console.log("onError:\n" + data);
+                console.log(data);
                 // 错误!
-                RtcEngine.leaveChannel();
+
+                if (data.err === 17) {
+                    RtcEngine.leaveChannel();
+                    RtcEngine.destroy();
+                }
+
+                const {onCancel} = this.props;
+                onCancel(data.err)
             }
         })
     }
 
     componentWillUnmount() {
         RtcEngine.removeEmitter()
-        RtcEngine.leaveChannel()
-        RtcEngine.destory()
     }
 
     handlerCancel = () => {
         RtcEngine.leaveChannel();
+        RtcEngine.destroy();
+
+        const {onCancel} = this.props;
+        onCancel()
     };
 
     handlerSwitchCamera = () => {
@@ -129,12 +143,44 @@ export default class RNAgoraExample extends Component {
         this.setState({
             isSpeaker: !this.state.isSpeaker
         }, () => {
-            RtcEngine.setEnableSpeakerphone(this.state.isSpeaker);
+            RtcEngine.setDefaultAudioRouteToSpeakerphone(this.state.isSpeaker);
         });
     };
 
+    handlerChangeCameraTorch = () => {
+        this.setState({
+            isCameraTorch: !this.state.isCameraTorch
+        }, () => {
+            RtcEngine.setCameraTorchOn(this.state.isCameraTorch);
+        });
+    };
+
+    handlerChangeVideo = () => {
+        this.setState({
+            disableVideo: !this.state.disableVideo
+        }, () => {
+            this.state.disableVideo ? RtcEngine.enableVideo() : RtcEngine.disableVideo()
+        })
+    };
+
+    handlerHideButtons = () => {
+        this.setState({
+            isHideButtons: !this.state.isHideButtons
+        })
+    };
+
+    onPressVideo = (uid) => {
+        this.setState({
+            selectUid: uid
+        }, () => {
+            this.setState({
+                visible: true
+            })
+        })
+    };
+
     render() {
-        const {isMute, isSpeaker, remotes, isJoinSuccess} = this.state;
+        const {isMute, isSpeaker, isCameraTorch, disableVideo, isHideButtons, remotes, isJoinSuccess, visible} = this.state;
 
         if (!isJoinSuccess) {
             return (
@@ -145,64 +191,115 @@ export default class RNAgoraExample extends Component {
         }
 
         return (
-            <View style={styles.container}>
-                <AgoraView ref="localVideo" style={styles.localView} showLocalVideo={true}/>
+            <TouchableOpacity
+                activeOpacity={1}
+                onPress={this.handlerHideButtons}
+                style={styles.container}
+            >
+                <AgoraView style={styles.localView} showLocalVideo={true}/>
                 <View style={styles.absView}>
-                    <View style={styles.videoView}>
-                        {remotes.map((v, k) => {
-                            console.log("remotes k:" + k + " v:" + v)
-                            return (
-                                <AgoraView
-                                    style={styles.remoteView}
-                                    key={k}
-                                    zOrderMediaOverlay={true}
-                                    remoteUid={v}
-                                />
-                            )
-                        })}
-                    </View>
+                    {!visible ?
+                        <View style={styles.videoView}>
+                            {remotes.map((v, k) => {
+                                return (
+                                    <TouchableOpacity
+                                        activeOpacity={1}
+                                        onPress={() => this.onPressVideo(v)}
+                                        key={k}
+                                    >
+                                        <AgoraView
+                                            style={styles.remoteView}
+                                            zOrderMediaOverlay={true}
+                                            remoteUid={v}
+                                        />
+                                    </TouchableOpacity>
+                                )
+                            })}
+                        </View> : <View style={styles.videoView}/>
+                    }
+
+                    {!isHideButtons &&
                     <View>
-                        <VideoOperateButton
-                            style={{alignSelf: 'center'}}
+                        <OperateButton
+                            style={{alignSelf: 'center', marginBottom: -10}}
                             onPress={this.handlerCancel}
                             imgStyle={{width: 60, height: 60}}
                             source={require('../images/btn_endcall.png')}
                         />
                         <View style={styles.bottomView}>
-                            <VideoOperateButton
+                            <OperateButton
+                                onPress={this.handlerChangeCameraTorch}
+                                imgStyle={{width: 40, height: 40}}
+                                source={isCameraTorch ? require('../images/闪光灯打开.png') : require('../images/闪光灯关闭.png')}
+                            />
+                            <OperateButton
+                                onPress={this.handlerChangeVideo}
+                                source={disableVideo ? require('../images/摄像头打开.png') : require('../images/摄像头关闭.png')}
+                            />
+                        </View>
+                        <View style={styles.bottomView}>
+                            <OperateButton
                                 onPress={this.handlerMuteAllRemoteAudioStreams}
                                 source={isMute ? require('../images/icon_muted.png') : require('../images/btn_mute.png')}
                             />
-                            <VideoOperateButton
+                            <OperateButton
                                 onPress={this.handlerSwitchCamera}
                                 source={require('../images/btn_switch_camera.png')}
                             />
-                            <VideoOperateButton
+                            <OperateButton
                                 onPress={this.handlerSetEnableSpeakerphone}
-                                source={isSpeaker ? require('../images/icon_speaker.png') : require('../images/btn_speaker.png')}
+                                source={!isSpeaker ? require('../images/icon_speaker.png') : require('../images/btn_speaker.png')}
                             />
                         </View>
                     </View>
+                    }
                 </View>
-            </View>
+
+                <Modal
+                    visible={visible}
+                    presentationStyle={'fullScreen'}
+                    animationType={'slide'}
+                    onRequestClose={() => {
+                    }}
+                >
+                    <TouchableOpacity
+                        activeOpacity={1}
+                        style={{flex: 1}}
+                        onPress={() => this.setState({
+                            visible: false
+                        })}
+                    >
+                        <AgoraView
+                            style={{flex: 1}}
+                            zOrderMediaOverlay={true}
+                            remoteUid={this.state.selectUid}
+                        />
+                    </TouchableOpacity>
+                </Modal>
+            </TouchableOpacity>
         );
     }
 }
 
-const VideoOperateButton = ({onPress, source, style, imgStyle = {width: 50, height: 50}}) => {
-    return (
-        <TouchableOpacity
-            style={style}
-            onPress={onPress}
-            activeOpacity={.7}
-        >
-            <Image
-                style={imgStyle}
-                source={source}
-            />
-        </TouchableOpacity>
-    )
-};
+class OperateButton extends PureComponent {
+    render() {
+
+        const {onPress, source, style, imgStyle = {width: 50, height: 50}} = this.props;
+
+        return (
+            <TouchableOpacity
+                style={style}
+                onPress={onPress}
+                activeOpacity={.7}
+            >
+                <Image
+                    style={imgStyle}
+                    source={source}
+                />
+            </TouchableOpacity>
+        )
+    }
+}
 
 const styles = StyleSheet.create({
     container: {
