@@ -139,10 +139,10 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-agoraio')
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':react-native-agoraio')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     //    compile "com.android.support:appcompat-v7:23.0.1"
-    compile 'com.facebook.react:react-native:+'
+    implementation 'com.facebook.react:react-native:+'
     // From node_modules
 }
 
