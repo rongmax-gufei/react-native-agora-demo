@@ -26,9 +26,10 @@ export default class RNAgoraExample extends Component {
         this.state = {
             remotes: [],
             isJoinSuccess: false,
-            isSpeaker: true,
+            isBroadcaster: false,
+            isSwitchCamera: false,
             isMute: false,
-            isCameraTorch: false,
+            isSpeaker: true,
             disableVideo: true,
             isHideButtons: false,
             visible: false,
@@ -45,7 +46,10 @@ export default class RNAgoraExample extends Component {
             clientRole: 1,//1:Broadcaster,2:Audience，实现双向语音通话设置角色为主播即可
             swapWidthAndHeight: true
         };
+        // 初始化声网
         RtcEngine.init(options);
+        // 初始化美颜
+        RtcEngine.initKiwiEnv();
     }
 
     componentDidMount() {
@@ -85,9 +89,10 @@ export default class RNAgoraExample extends Component {
             onJoinChannelSuccess: (data) => {
                 // 加入房间成功
                 console.log(data);
+                const {isBroadcaster} = this.state;
                 // 开启摄像头预览
-                RtcEngine.startPreview();
-
+                if (isBroadcaster)
+                    RtcEngine.startPreview();
                 this.setState({
                     isJoinSuccess: true
                 });
@@ -116,7 +121,9 @@ export default class RNAgoraExample extends Component {
     }
 
     componentWillUnmount() {
-        RtcEngine.removeEmitter()
+        RtcEngine.leaveChannel();
+        RtcEngine.destroy();
+        RtcEngine.removeEmitter();
     }
 
     handlerCancel = () => {
@@ -125,6 +132,14 @@ export default class RNAgoraExample extends Component {
 
         const {onCancel} = this.props;
         onCancel()
+    };
+
+    handlerChageRole = () => {
+        this.setState({
+            isBroadcaster: !this.state.isBroadcaster
+        }, () => {
+            RtcEngine.changeRole();
+        })
     };
 
     handlerSwitchCamera = () => {
@@ -140,18 +155,11 @@ export default class RNAgoraExample extends Component {
     };
 
     handlerSetEnableSpeakerphone = () => {
+        handlerMuteAllRemoteAudioStreams
         this.setState({
             isSpeaker: !this.state.isSpeaker
         }, () => {
             RtcEngine.setDefaultAudioRouteToSpeakerphone(this.state.isSpeaker);
-        });
-    };
-
-    handlerChangeCameraTorch = () => {
-        this.setState({
-            isCameraTorch: !this.state.isCameraTorch
-        }, () => {
-            RtcEngine.setCameraTorchOn(this.state.isCameraTorch);
         });
     };
 
@@ -161,6 +169,18 @@ export default class RNAgoraExample extends Component {
         }, () => {
             this.state.disableVideo ? RtcEngine.enableVideo() : RtcEngine.disableVideo()
         })
+    };
+
+    handlerSwitchCamera = () => {
+        RtcEngine.switchCamera();
+    };
+
+    handlerOpenMask = () => {
+        RtcEngine.openMask();
+    };
+
+    handlerOpenFilter = () => {
+        RtcEngine.openFilter();
     };
 
     handlerHideButtons = () => {
@@ -180,7 +200,7 @@ export default class RNAgoraExample extends Component {
     };
 
     render() {
-        const {isMute, isSpeaker, isCameraTorch, disableVideo, isHideButtons, remotes, isJoinSuccess, visible} = this.state;
+        const {isBroadcaster, isSwitchCamera, isMute, isSpeaker, disableVideo, isHideButtons, remotes, isJoinSuccess, visible} = this.state;
 
         if (!isJoinSuccess) {
             return (
@@ -223,32 +243,33 @@ export default class RNAgoraExample extends Component {
                         <OperateButton
                             style={{alignSelf: 'center', marginBottom: -10}}
                             onPress={this.handlerCancel}
-                            imgStyle={{width: 60, height: 60}}
-                            source={require('../images/btn_endcall.png')}
+                            imgStyle={{width: 35, height: 35}}
+                            source={require('../images/hangup.png')}
                         />
                         <View style={styles.bottomView}>
                             <OperateButton
-                                onPress={this.handlerChangeCameraTorch}
-                                imgStyle={{width: 40, height: 40}}
-                                source={isCameraTorch ? require('../images/闪光灯打开.png') : require('../images/闪光灯关闭.png')}
-                            />
-                            <OperateButton
-                                onPress={this.handlerChangeVideo}
-                                source={disableVideo ? require('../images/摄像头打开.png') : require('../images/摄像头关闭.png')}
-                            />
-                        </View>
-                        <View style={styles.bottomView}>
-                            <OperateButton
-                                onPress={this.handlerMuteAllRemoteAudioStreams}
-                                source={isMute ? require('../images/icon_muted.png') : require('../images/btn_mute.png')}
+                                onPress={this.handlerChageRole}
+                                source={require('../images/btn_request_broadcast.png')}
                             />
                             <OperateButton
                                 onPress={this.handlerSwitchCamera}
-                                source={require('../images/btn_switch_camera.png')}
+                                source={isSwitchCamera ? require('../images/switch_camera.png') : require('../images/unswitch-camera.png')}
                             />
                             <OperateButton
-                                onPress={this.handlerSetEnableSpeakerphone}
-                                source={!isSpeaker ? require('../images/icon_speaker.png') : require('../images/btn_speaker.png')}
+                                onPress={this.handlerMuteAllRemoteAudioStreams}
+                                source={isMute ? require('../images/mute.png') : require('../images/unmute.png')}
+                            />
+                            <OperateButton
+                                onPress={this.handlerChangeVideo}
+                                source={disableVideo ? require('../images/cameraoff.png') : require('../images/cameraon.png')}
+                            />
+                            <OperateButton
+                                onPress={this.handlerOpenFilter}
+                                source={require('../images/filter.png')}
+                            />
+                            <OperateButton
+                                onPress={this.handlerOpenMask}
+                                source={require('../images/btn_mask.png')}
                             />
                         </View>
                     </View>
@@ -284,7 +305,7 @@ export default class RNAgoraExample extends Component {
 class OperateButton extends PureComponent {
     render() {
 
-        const {onPress, source, style, imgStyle = {width: 50, height: 50}} = this.props;
+        const {onPress, source, style, imgStyle = {width: 35, height: 35}} = this.props;
 
         return (
             <TouchableOpacity
