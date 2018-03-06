@@ -48,8 +48,6 @@ export default class RNAgoraExample extends Component {
         };
         // 初始化声网
         RtcEngine.init(options);
-        // 初始化美颜
-        RtcEngine.initKiwiEnv();
     }
 
     componentDidMount() {
@@ -175,14 +173,6 @@ export default class RNAgoraExample extends Component {
         RtcEngine.switchCamera();
     };
 
-    handlerOpenMask = () => {
-        RtcEngine.openMask();
-    };
-
-    handlerOpenFilter = () => {
-        RtcEngine.openFilter();
-    };
-
     handlerHideButtons = () => {
         this.setState({
             isHideButtons: !this.state.isHideButtons
@@ -213,7 +203,7 @@ export default class RNAgoraExample extends Component {
         return (
             <TouchableOpacity
                 activeOpacity={1}
-                onPress={this.handlerHideButtons}
+                onPress={this.handlerHideButtons.bind(this)}
                 style={styles.container}
             >
                 <AgoraView style={styles.localView} showLocalVideo={true}/>
@@ -224,7 +214,7 @@ export default class RNAgoraExample extends Component {
                                 return (
                                     <TouchableOpacity
                                         activeOpacity={1}
-                                        onPress={() => this.onPressVideo(v)}
+                                        onPress={() => this.onPressVideo.bind(this, v)}
                                         key={k}
                                     >
                                         <AgoraView
@@ -242,34 +232,26 @@ export default class RNAgoraExample extends Component {
                     <View>
                         <OperateButton
                             style={{alignSelf: 'center', marginBottom: -10}}
-                            onPress={this.handlerCancel}
-                            imgStyle={{width: 35, height: 35}}
+                            onPress={this.handlerCancel.bind(this)}
+                            imgStyle={{width: 55, height: 55}}
                             source={require('../images/hangup.png')}
                         />
                         <View style={styles.bottomView}>
                             <OperateButton
-                                onPress={this.handlerChageRole}
+                                onPress={this.handlerChageRole.bind(this)}
                                 source={require('../images/btn_request_broadcast.png')}
                             />
                             <OperateButton
-                                onPress={this.handlerSwitchCamera}
+                                onPress={this.handlerSwitchCamera.bind(this)}
                                 source={isSwitchCamera ? require('../images/switch_camera.png') : require('../images/unswitch-camera.png')}
                             />
                             <OperateButton
-                                onPress={this.handlerMuteAllRemoteAudioStreams}
+                                onPress={this.handlerMuteAllRemoteAudioStreams.bind(this)}
                                 source={isMute ? require('../images/mute.png') : require('../images/unmute.png')}
                             />
                             <OperateButton
-                                onPress={this.handlerChangeVideo}
+                                onPress={this.handlerChangeVideo.bind(this)}
                                 source={disableVideo ? require('../images/cameraoff.png') : require('../images/cameraon.png')}
-                            />
-                            <OperateButton
-                                onPress={this.handlerOpenFilter}
-                                source={require('../images/filter.png')}
-                            />
-                            <OperateButton
-                                onPress={this.handlerOpenMask}
-                                source={require('../images/btn_mask.png')}
                             />
                         </View>
                     </View>
@@ -305,7 +287,7 @@ export default class RNAgoraExample extends Component {
 class OperateButton extends PureComponent {
     render() {
 
-        const {onPress, source, style, imgStyle = {width: 35, height: 35}} = this.props;
+        const {onPress, source, style, imgStyle = {width: 55, height: 55}} = this.props;
 
         return (
             <TouchableOpacity
