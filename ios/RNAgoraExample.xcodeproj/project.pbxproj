@@ -314,7 +314,6 @@
 		183D465E202C649F00271F94 /* AgoraRtcCryptoLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcCryptoLoader.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcCryptoLoader.framework"; sourceTree = "<group>"; };
 		185EA391204EA85100301DBB /* videoprp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = videoprp.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/videoprp.framework"; sourceTree = "<group>"; };
 		18855CC8202D6D6A0081BAF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "RNAgoraExample/Launch Screen.storyboard"; sourceTree = "<group>"; };
-		18C32EB5202D4BB10052DF95 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/KiwiFaceSDK/opencv2.framework"; sourceTree = "<group>"; };
 		18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		23C20ED71F0CE1A90095F60C /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		23C20ED91F0CE1B30095F60C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -478,7 +477,6 @@
 			children = (
 				185EA391204EA85100301DBB /* videoprp.framework */,
 				18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */,
-				18C32EB5202D4BB10052DF95 /* opencv2.framework */,
 				183D465E202C649F00271F94 /* AgoraRtcCryptoLoader.framework */,
 				183D465C202C649E00271F94 /* AgoraRtcEngineKit.framework */,
 				183D465D202C649E00271F94 /* libcrypto.a */,
