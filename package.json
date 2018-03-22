@@ -9,7 +9,7 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-native": "^0.52.3",
-    "react-native-agoraio": "^2.1.6"
+    "react-native-agoraio": "^2.1.8"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",
