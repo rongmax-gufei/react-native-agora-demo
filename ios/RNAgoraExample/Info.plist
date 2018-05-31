@@ -35,16 +35,24 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>App需要您的同意，才能访问媒体资料库</string>
 	<key>NSCameraUsageDescription</key>
-	<string>use camera to start video call</string>
+	<string>App需要您的同意，才能采集用户视频数据进行通讯</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>use microphone to start video call</string>
+	<string>App需要您的同意，才能采集用户语音进行通讯</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App需要您的同意，才能保存图片到您的相册</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App需要您的同意，才能访问相册用户图片上传</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -53,8 +61,6 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>Launch Screen</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

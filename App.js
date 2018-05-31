@@ -6,55 +6,69 @@
 
 import React, {Component} from 'react';
 import {
-    Platform,
     StyleSheet,
     Text,
     View,
-    TouchableOpacity
+    TextInput,
+    TouchableOpacity,
 } from 'react-native';
 
 import LiveView from './src'
+
+import {Alert} from 'react-native';
+import RNRestart from 'react-native-restart';
+import {setJSExceptionHandler} from 'react-native-exception-handler';
+
+const errorHandler = (e, isFatal) => {
+    if (isFatal) {
+        Alert.alert(
+            'Unexpected error occurred',
+            `
+        Error: ${(isFatal) ? 'Fatal:' : ''} ${e.name} ${e.message}
+
+        We will need to restart the app.
+        `,
+            [{
+                text: 'Restart',
+                onPress: () => {
+                    RNRestart.Restart();
+                }
+            }]
+        );
+    } else {
+        console.log(e); // So that we can see it in the ADB logs in case of Android if needed
+    }
+};
+
+setJSExceptionHandler(errorHandler);
 
 export default class App extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            channel: '00001', //default '00001'
+            uid: '0',         //default 0
+            role: 1,          //1:Broadcaster 2:Audience
             showLive: false,
             err: undefined
         };
     }
 
-    componentDidMount() {
-        const oneArr = [
-            {id:0, name: 'sam0'},
-            {id:1, name: 'sam1'},
-            {id:2, name: 'sam2'},
-            {id:3, name: 'sam3'},
-            {id:4, name: 'sam4'}
-        ];
-        const twoArr = [
-            {id:0, name: 'sam0'},
-            {id:5, name: 'Max5'},
-            {id:6, name: 'Max6'},
-            {id:7, name: 'Max7'},
-            {id:2, name: 'sam2'}
-        ];
-
-        let mergeObj = {};
-        [...oneArr, ...twoArr].map(v=>{
-            mergeObj[v.id] = v
-        });
-
-        const mergeArr = Object.values(mergeObj);
-
-        console.log(mergeArr);
-    }
-
     handleJoin = () => {
-        this.setState({
-            showLive: true
-        })
+        if (this.state.channel === '') {
+            this.setState({
+                err: 'channel is empty'
+            })
+        } else if (this.state.uid === '') {
+            this.setState({
+                err: 'uid is empty'
+            })
+        } else {
+            this.setState({
+                showLive: true
+            })
+        }
     };
 
     handleCancel = (err) => {
@@ -64,26 +78,70 @@ export default class App extends Component {
         })
     };
 
+    handleSegmentChange = (role) => {
+        this.setState({
+            role: role
+        })
+    }
+
+    get isBroadcaster() {
+        return this.state.role === 1
+    }
+
     render() {
-        const {showLive, err} = this.state;
+        const {channel, uid, role, showLive, err} = this.state;
+
+        let leftStyle = this.isBroadcaster ? styles.roleLeftSelected : styles.roleLeftUnSelected
+        let leftTextStyle = this.isBroadcaster ? styles.textRoleSelected : styles.textRoleUnSelected
+
+        let rightStyle = this.isBroadcaster ? styles.roleRightUnSelected : styles.roleRightSelected
+        let rightTextStyle = this.isBroadcaster ? styles.textRoleUnSelected : styles.textRoleSelected
+
         if (showLive) {
             return (
-                <LiveView
-                    onCancel={this.handleCancel}
-                />
+                <LiveView onCancel={this.handleCancel} channel={channel} uid={uid} role={role}/>
             )
         } else {
             return (
                 <View style={styles.container}>
-                    {!!err &&
-                    <Text>错误代码 {err}</Text>
-                    }
+
+                    <Text style={styles.welcome}>声网 agora.io</Text>
+
+                    <Text style={styles.textChannelNo}>channel</Text>
+                    <TextInput style={styles.textInput} placeholder={'Joining in the same channel'}
+                               keyboardType="numeric"
+                               onChangeText={(value) => this.setState({channel: value})} value={channel}/>
+
+                    <Text style={styles.textUserId}>uid</Text>
+                    <TextInput style={styles.textInput} placeholder={'Unique id for each member in one channel'}
+                               keyboardType="numeric"
+                               multiline={false}
+                               maxLength={6}
+                               onChangeText={(value) => this.setState({uid: value})} value={uid}/>
+
+                    <Text style={styles.textRole}>role</Text>
+                    <View style={styles.roleWrap}>
+                        <TouchableOpacity
+                            style={leftStyle}
+                            onPress={this.handleSegmentChange.bind(this, 1)}>
+                            <Text style={leftTextStyle}>Broadcaster</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={rightStyle}
+                            onPress={this.handleSegmentChange.bind(this, 2)}>
+                            <Text style={rightTextStyle}>Audience</Text>
+                        </TouchableOpacity>
+                    </View>
+
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={this.handleJoin}
-                    >
-                        <Text style={{color:'#fff'}}>点击进入房间 开始视频</Text>
+                        onPress={this.handleJoin}>
+                        <Text style={styles.buttonText}>Enter</Text>
                     </TouchableOpacity>
+
+                    {!!err && <Text style={styles.errorText}>Error： {err}</Text>}
+
+                    <Text style={styles.companyText}>Powered by agora.io inc.</Text>
                 </View>
             );
         }
@@ -93,27 +151,108 @@ export default class App extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        paddingHorizontal: 30,
+        paddingVertical: 30,
         backgroundColor: '#F5FCFF',
     },
     welcome: {
-        fontSize: 20,
+        fontSize: 25,
         textAlign: 'center',
-        margin: 10,
+        marginTop: 100,
+        marginBottom: 60,
+        color: 'black'
     },
-    instructions: {
-        textAlign: 'center',
+    textChannelNo: {
+        fontSize: 18,
         color: '#333333',
-        marginBottom: 5,
+    },
+    textUserId: {
+        fontSize: 18,
+        color: '#333333',
+        marginTop: 15,
+    },
+    textRole: {
+        fontSize: 18,
+        color: '#333333',
+        marginTop: 15,
+    },
+    roleWrap: {
+        height: 34,
+        flexDirection: 'row',
+        marginTop: 15,
+        borderColor: '#5caaf6',
+        borderRadius: 5,
+        borderWidth: 1,
+    },
+    roleLeftSelected: {
+        flex: 1,
+        backgroundColor: '#5caaf6',
+        borderBottomLeftRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    roleLeftUnSelected: {
+        flex: 1,
+        backgroundColor: '#00000000',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    roleRightSelected: {
+        flex: 1,
+        backgroundColor: '#5caaf6',
+        borderBottomRightRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    roleRightUnSelected: {
+        flex: 1,
+        backgroundColor: '#00000000',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    textRoleSelected: {
+        fontSize: 16,
+        color: '#ffffff',
+    },
+    textRoleUnSelected: {
+        fontSize: 16,
+        color: '#333333'
+    },
+    textInput: {
+        height: 44,
+        backgroundColor: '#F5FCFF',
+        borderRadius: 20,
+        borderColor: '#cccccc',
+        borderWidth: 0.5,
+        marginTop: 15,
+        paddingHorizontal: 20,
     },
     button: {
+        paddingHorizontal: 20,
         height: 44,
-        paddingHorizontal:20,
-        backgroundColor:'#6A71DD',
-        borderRadius:10,
-        justifyContent:'center',
-        alignItems:'center',
-        marginTop: 10
+        backgroundColor: '#5caaf6',
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 36,
+    },
+    buttonText: {
+        backgroundColor: '#5caaf6',
+        textAlign: 'center',
+        color: '#fff'
+    },
+    errorText: {
+        textAlign: 'center',
+        fontSize: 16,
+        color: 'red',
+        marginTop: 15,
+    },
+    companyText: {
+        position: 'absolute',
+        zIndex: 99,
+        fontSize: 14,
+        color: 'black',
+        alignSelf: 'center',
+        bottom: 54
     }
 });

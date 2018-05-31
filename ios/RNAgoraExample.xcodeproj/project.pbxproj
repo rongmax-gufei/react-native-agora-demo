@@ -19,13 +19,14 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		183D4660202C649F00271F94 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183D465C202C649E00271F94 /* AgoraRtcEngineKit.framework */; };
-		183D4661202C649F00271F94 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 183D465D202C649E00271F94 /* libcrypto.a */; };
-		183D4662202C649F00271F94 /* AgoraRtcCryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183D465E202C649F00271F94 /* AgoraRtcCryptoLoader.framework */; };
 		185EA3B5204EA85100301DBB /* videoprp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185EA391204EA85100301DBB /* videoprp.framework */; };
 		18855CC9202D6D6A0081BAF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18855CC8202D6D6A0081BAF4 /* Launch Screen.storyboard */; };
 		18C32F0C202D4C260052DF95 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */; };
-		18C32F0D202D4CCB0052DF95 /* libRCTAgora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 183D4639202C642500271F94 /* libRCTAgora.a */; };
+		18F9814920A2B02A0011AEB8 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F9812420A2B02A0011AEB8 /* ReplayKit.framework */; };
+		18F981E120A437EC0011AEB8 /* libRCTAgora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F981DF20A430C10011AEB8 /* libRCTAgora.a */; };
+		18F981EE20A4391C0011AEB8 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F981EB20A4391B0011AEB8 /* AgoraRtcEngineKit.framework */; };
+		18F981EF20A4391C0011AEB8 /* AgoraRtcCryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F981EC20A4391B0011AEB8 /* AgoraRtcCryptoLoader.framework */; };
+		18F981F020A4391C0011AEB8 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F981ED20A4391C0011AEB8 /* libcrypto.a */; };
 		23C20ED81F0CE1A90095F60C /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C20ED71F0CE1A90095F60C /* libresolv.tbd */; };
 		23C20EDA1F0CE1B30095F60C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C20ED91F0CE1B30095F60C /* libc++.tbd */; };
 		23C20EDC1F0CE1BD0095F60C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C20EDB1F0CE1BD0095F60C /* AVFoundation.framework */; };
@@ -165,9 +166,9 @@
 			remoteGlobalIDString = EBF21BFA1FC4989A0052F4D5;
 			remoteInfo = "jsinspector-tvOS";
 		};
-		183D4638202C642500271F94 /* PBXContainerItemProxy */ = {
+		18F981DE20A430C10011AEB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E8467CB1091342A08FE32579 /* RCTAgora.xcodeproj */;
+			containerPortal = 18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 23AF281C1EEFECD800D771AB;
 			remoteInfo = RCTAgora;
@@ -315,6 +316,11 @@
 		185EA391204EA85100301DBB /* videoprp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = videoprp.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/videoprp.framework"; sourceTree = "<group>"; };
 		18855CC8202D6D6A0081BAF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "RNAgoraExample/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		18F9812420A2B02A0011AEB8 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAgora.xcodeproj; path = "../../react-native-agora.git/ios/RCTAgora.xcodeproj"; sourceTree = "<group>"; };
+		18F981EB20A4391B0011AEB8 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcEngineKit.framework; path = "../../react-native-agora.git/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcEngineKit.framework"; sourceTree = "<group>"; };
+		18F981EC20A4391B0011AEB8 /* AgoraRtcCryptoLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcCryptoLoader.framework; path = "../../react-native-agora.git/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcCryptoLoader.framework"; sourceTree = "<group>"; };
+		18F981ED20A4391C0011AEB8 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../react-native-agora.git/ios/RCTAgora/Frameworks/AgoraSDK/libcrypto.a"; sourceTree = "<group>"; };
 		23C20ED71F0CE1A90095F60C /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		23C20ED91F0CE1B30095F60C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		23C20EDB1F0CE1BD0095F60C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -326,7 +332,6 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		E8467CB1091342A08FE32579 /* RCTAgora.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTAgora.xcodeproj; path = "../node_modules/react-native-agoraio/ios/RCTAgora.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,12 +339,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F981EE20A4391C0011AEB8 /* AgoraRtcEngineKit.framework in Frameworks */,
+				18F981EF20A4391C0011AEB8 /* AgoraRtcCryptoLoader.framework in Frameworks */,
+				18F981F020A4391C0011AEB8 /* libcrypto.a in Frameworks */,
+				18F9814920A2B02A0011AEB8 /* ReplayKit.framework in Frameworks */,
 				185EA3B5204EA85100301DBB /* videoprp.framework in Frameworks */,
-				18C32F0D202D4CCB0052DF95 /* libRCTAgora.a in Frameworks */,
 				18C32F0C202D4C260052DF95 /* AssetsLibrary.framework in Frameworks */,
-				183D4660202C649F00271F94 /* AgoraRtcEngineKit.framework in Frameworks */,
-				183D4661202C649F00271F94 /* libcrypto.a in Frameworks */,
-				183D4662202C649F00271F94 /* AgoraRtcCryptoLoader.framework in Frameworks */,
 				23C20EE61F0CE1EB0095F60C /* CoreTelephony.framework in Frameworks */,
 				23C20EE31F0CE1E10095F60C /* CoreMedia.framework in Frameworks */,
 				23C20EE41F0CE1E10095F60C /* CoreMotion.framework in Frameworks */,
@@ -357,6 +362,7 @@
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
+				18F981E120A437EC0011AEB8 /* libRCTAgora.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 			);
@@ -464,10 +470,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		183D4634202C642500271F94 /* Products */ = {
+		18F981DB20A430C10011AEB8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				183D4639202C642500271F94 /* libRCTAgora.a */,
+				18F981DF20A430C10011AEB8 /* libRCTAgora.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -475,6 +481,10 @@
 		23C20ED61F0CE1A90095F60C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18F981EC20A4391B0011AEB8 /* AgoraRtcCryptoLoader.framework */,
+				18F981EB20A4391B0011AEB8 /* AgoraRtcEngineKit.framework */,
+				18F981ED20A4391C0011AEB8 /* libcrypto.a */,
+				18F9812420A2B02A0011AEB8 /* ReplayKit.framework */,
 				185EA391204EA85100301DBB /* videoprp.framework */,
 				18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */,
 				183D465E202C649F00271F94 /* AgoraRtcCryptoLoader.framework */,
@@ -513,6 +523,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -524,7 +535,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				E8467CB1091342A08FE32579 /* RCTAgora.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -615,8 +625,8 @@
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
 				{
-					ProductGroup = 183D4634202C642500271F94 /* Products */;
-					ProjectRef = E8467CB1091342A08FE32579 /* RCTAgora.xcodeproj */;
+					ProductGroup = 18F981DB20A430C10011AEB8 /* Products */;
+					ProjectRef = 18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */;
 				},
 				{
 					ProductGroup = 5E91572E1DD0AC6500FF2AA8 /* Products */;
@@ -793,11 +803,11 @@
 			remoteRef = 183D4560202C3A2F00271F94 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		183D4639202C642500271F94 /* libRCTAgora.a */ = {
+		18F981DF20A430C10011AEB8 /* libRCTAgora.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRCTAgora.a;
-			remoteRef = 183D4638202C642500271F94 /* PBXContainerItemProxy */;
+			remoteRef = 18F981DE20A430C10011AEB8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
@@ -977,7 +987,7 @@
 					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/**",
 				);
 				INFOPLIST_FILE = RNAgoraExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK\"/**";
 				OTHER_LDFLAGS = (
@@ -985,7 +995,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wild.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilder.live;
 				PRODUCT_NAME = RNAgoraExample;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1004,7 +1014,7 @@
 					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/**",
 				);
 				INFOPLIST_FILE = RNAgoraExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK\"/**";
 				OTHER_LDFLAGS = (
@@ -1012,7 +1022,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wild.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilder.live;
 				PRODUCT_NAME = RNAgoraExample;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

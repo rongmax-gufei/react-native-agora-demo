@@ -43,8 +43,8 @@ export default class RNAgoraExample extends Component {
             appid: '858c0ae5d2574d6884a257c912b198c0',//控制台申请
             channelProfile: 1,//频道模式,1:直播互动
             videoProfile: 40,//640x480(resolution)、15(fps)、500(kbps)
-            clientRole: 1,//1:Broadcaster,2:Audience，实现双向语音通话设置角色为主播即可
-            swapWidthAndHeight: true
+            clientRole: this.props.role,//1:Broadcaster,2:Audience，实现双向语音通话设置角色为主播即可
+            swapWidthAndHeight: true,
         };
         // 初始化声网
         RtcEngine.init(options);
@@ -58,7 +58,7 @@ export default class RNAgoraExample extends Component {
         });
 
         //加入房间
-        RtcEngine.joinChannel();
+        RtcEngine.joinChannel(this.props.channel, parseInt(this.props.uid));
 
         // 启用说话者音量提示
         RtcEngine.enableAudioVolumeIndication(500, 3);
@@ -88,6 +88,8 @@ export default class RNAgoraExample extends Component {
                 // 加入房间成功
                 console.log(data);
                 const {isBroadcaster} = this.state;
+                // 打开美颜
+                RtcEngine.openBeautityFace();
                 // 开启摄像头预览
                 if (isBroadcaster)
                     RtcEngine.startPreview();
@@ -97,7 +99,7 @@ export default class RNAgoraExample extends Component {
             },
             onAudioVolumeIndication: (data) => {
                 // 声音回调
-                console.log(data, '-----');
+                // console.log(data, '-----');
             },
             onUserJoined: (data) => {
                 console.log(data);
@@ -232,25 +234,25 @@ export default class RNAgoraExample extends Component {
                     <View>
                         <OperateButton
                             style={{alignSelf: 'center', marginBottom: -10}}
-                            onPress={this.handlerCancel.bind(this)}
+                            onPress={this.handlerCancel}
                             imgStyle={{width: 55, height: 55}}
                             source={require('../images/hangup.png')}
                         />
                         <View style={styles.bottomView}>
                             <OperateButton
-                                onPress={this.handlerChageRole.bind(this)}
+                                onPress={this.handlerChageRole}
                                 source={require('../images/btn_request_broadcast.png')}
                             />
                             <OperateButton
-                                onPress={this.handlerSwitchCamera.bind(this)}
+                                onPress={this.handlerSwitchCamera}
                                 source={isSwitchCamera ? require('../images/switch_camera.png') : require('../images/unswitch-camera.png')}
                             />
                             <OperateButton
-                                onPress={this.handlerMuteAllRemoteAudioStreams.bind(this)}
+                                onPress={this.handlerMuteAllRemoteAudioStreams}
                                 source={isMute ? require('../images/mute.png') : require('../images/unmute.png')}
                             />
                             <OperateButton
-                                onPress={this.handlerChangeVideo.bind(this)}
+                                onPress={this.handlerChangeVideo}
                                 source={disableVideo ? require('../images/cameraoff.png') : require('../images/cameraon.png')}
                             />
                         </View>

@@ -1,4 +1,8 @@
 rootProject.name = 'RNAgoraExample'
+include ':react-native-restart'
+project(':react-native-restart').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-restart/android')
+include ':react-native-exception-handler'
+project(':react-native-exception-handler').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-exception-handler/android')
 include ':react-native-agoraio'
 project(':react-native-agoraio').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-agoraio/android')
 
