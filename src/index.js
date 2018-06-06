@@ -26,11 +26,11 @@ export default class RNAgoraExample extends Component {
         this.state = {
             remotes: [],
             isJoinSuccess: false,
-            isBroadcaster: false,
+            isBroadcasting: false,
             isSwitchCamera: false,
             isMute: false,
             isSpeaker: true,
-            disableVideo: true,
+            disableVideo: false,
             isHideButtons: false,
             visible: false,
             selectUid: undefined
@@ -134,11 +134,11 @@ export default class RNAgoraExample extends Component {
         onCancel()
     };
 
-    handlerChageRole = () => {
+    handlerBroadcast = () => {
         this.setState({
-            isBroadcaster: !this.state.isBroadcaster
+            isBroadcasting: !this.state.isBroadcasting
         }, () => {
-            RtcEngine.changeRole();
+            this.state.isBroadcasting ? RtcEngine.startBroadcasting() : RtcEngine.stopBroadcasting();
         })
     };
 
@@ -167,12 +167,8 @@ export default class RNAgoraExample extends Component {
         this.setState({
             disableVideo: !this.state.disableVideo
         }, () => {
-            this.state.disableVideo ? RtcEngine.enableVideo() : RtcEngine.disableVideo()
+            this.state.disableVideo ? RtcEngine.disableVideo() : RtcEngine.enableVideo()
         })
-    };
-
-    handlerSwitchCamera = () => {
-        RtcEngine.switchCamera();
     };
 
     handlerHideButtons = () => {
@@ -192,7 +188,7 @@ export default class RNAgoraExample extends Component {
     };
 
     render() {
-        const {isBroadcaster, isSwitchCamera, isMute, isSpeaker, disableVideo, isHideButtons, remotes, isJoinSuccess, visible} = this.state;
+        const {isBroadcasting, isSwitchCamera, isMute, isSpeaker, disableVideo, isHideButtons, remotes, isJoinSuccess, visible} = this.state;
 
         if (!isJoinSuccess) {
             return (
@@ -240,7 +236,7 @@ export default class RNAgoraExample extends Component {
                         />
                         <View style={styles.bottomView}>
                             <OperateButton
-                                onPress={this.handlerChageRole}
+                                onPress={this.handlerBroadcast}
                                 source={require('../images/btn_request_broadcast.png')}
                             />
                             <OperateButton
