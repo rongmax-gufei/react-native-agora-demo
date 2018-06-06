@@ -19,6 +19,13 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		184CAC6B20C7BED400093E3E /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
+		184CAC7120C7C89500093E3E /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F9812420A2B02A0011AEB8 /* ReplayKit.framework */; };
+		184CAC7420C7C89500093E3E /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184CAC7320C7C89500093E3E /* SampleHandler.swift */; };
+		184CAC7B20C7C89500093E3E /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F9812420A2B02A0011AEB8 /* ReplayKit.framework */; };
+		184CAC7D20C7C89500093E3E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184CAC7C20C7C89500093E3E /* UIKit.framework */; };
+		184CAC8020C7C89500093E3E /* BroadcastSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184CAC7F20C7C89500093E3E /* BroadcastSetupViewController.swift */; };
+		184CAC8420C7C89500093E3E /* RNAgoraExample-BroadcastSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 184CAC7A20C7C89500093E3E /* RNAgoraExample-BroadcastSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		184CAC8720C7C89500093E3E /* RNAgoraExample-Broadcast.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 184CAC7020C7C89500093E3E /* RNAgoraExample-Broadcast.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		185EA3B5204EA85100301DBB /* videoprp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185EA391204EA85100301DBB /* videoprp.framework */; };
 		18855CC9202D6D6A0081BAF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18855CC8202D6D6A0081BAF4 /* Launch Screen.storyboard */; };
 		18C32F0C202D4C260052DF95 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */; };
@@ -166,6 +173,20 @@
 			remoteGlobalIDString = EBF21BFA1FC4989A0052F4D5;
 			remoteInfo = "jsinspector-tvOS";
 		};
+		184CAC8220C7C89500093E3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 184CAC7920C7C89500093E3E;
+			remoteInfo = "RNAgoraExample-BroadcastSetupUI";
+		};
+		184CAC8520C7C89500093E3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 184CAC6F20C7C89500093E3E;
+			remoteInfo = "RNAgoraExample-Broadcast";
+		};
 		18F981DE20A430C10011AEB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */;
@@ -294,6 +315,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		184CAC8E20C7C89500093E3E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				184CAC8720C7C89500093E3E /* RNAgoraExample-Broadcast.appex in Embed App Extensions */,
+				184CAC8420C7C89500093E3E /* RNAgoraExample-BroadcastSetupUI.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
@@ -313,6 +349,13 @@
 		183D465C202C649E00271F94 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcEngineKit.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcEngineKit.framework"; sourceTree = "<group>"; };
 		183D465D202C649E00271F94 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/libcrypto.a"; sourceTree = "<group>"; };
 		183D465E202C649F00271F94 /* AgoraRtcCryptoLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcCryptoLoader.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcCryptoLoader.framework"; sourceTree = "<group>"; };
+		184CAC7020C7C89500093E3E /* RNAgoraExample-Broadcast.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "RNAgoraExample-Broadcast.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		184CAC7320C7C89500093E3E /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
+		184CAC7520C7C89500093E3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		184CAC7A20C7C89500093E3E /* RNAgoraExample-BroadcastSetupUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "RNAgoraExample-BroadcastSetupUI.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		184CAC7C20C7C89500093E3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		184CAC7F20C7C89500093E3E /* BroadcastSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastSetupViewController.swift; sourceTree = "<group>"; };
+		184CAC8120C7C89500093E3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185EA391204EA85100301DBB /* videoprp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = videoprp.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/videoprp.framework"; sourceTree = "<group>"; };
 		18855CC8202D6D6A0081BAF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "RNAgoraExample/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -365,6 +408,23 @@
 				18F981E120A437EC0011AEB8 /* libRCTAgora.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		184CAC6D20C7C89500093E3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184CAC7120C7C89500093E3E /* ReplayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		184CAC7720C7C89500093E3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184CAC7B20C7C89500093E3E /* ReplayKit.framework in Frameworks */,
+				184CAC7D20C7C89500093E3E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +530,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		184CAC7220C7C89500093E3E /* RNAgoraExample-Broadcast */ = {
+			isa = PBXGroup;
+			children = (
+				184CAC7320C7C89500093E3E /* SampleHandler.swift */,
+				184CAC7520C7C89500093E3E /* Info.plist */,
+			);
+			path = "RNAgoraExample-Broadcast";
+			sourceTree = "<group>";
+		};
+		184CAC7E20C7C89500093E3E /* RNAgoraExample-BroadcastSetupUI */ = {
+			isa = PBXGroup;
+			children = (
+				184CAC7F20C7C89500093E3E /* BroadcastSetupViewController.swift */,
+				184CAC8120C7C89500093E3E /* Info.plist */,
+			);
+			path = "RNAgoraExample-BroadcastSetupUI";
+			sourceTree = "<group>";
+		};
 		18F981DB20A430C10011AEB8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +576,7 @@
 				23C20EDB1F0CE1BD0095F60C /* AVFoundation.framework */,
 				23C20ED91F0CE1B30095F60C /* libc++.tbd */,
 				23C20ED71F0CE1A90095F60C /* libresolv.tbd */,
+				184CAC7C20C7C89500093E3E /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -553,6 +632,8 @@
 			children = (
 				13B07FAE1A68108700A75B9A /* RNAgoraExample */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				184CAC7220C7C89500093E3E /* RNAgoraExample-Broadcast */,
+				184CAC7E20C7C89500093E3E /* RNAgoraExample-BroadcastSetupUI */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				23C20ED61F0CE1A90095F60C /* Frameworks */,
 			);
@@ -564,6 +645,8 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* RNAgoraExample.app */,
+				184CAC7020C7C89500093E3E /* RNAgoraExample-Broadcast.appex */,
+				184CAC7A20C7C89500093E3E /* RNAgoraExample-BroadcastSetupUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -579,15 +662,52 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				184CAC8E20C7C89500093E3E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				184CAC8320C7C89500093E3E /* PBXTargetDependency */,
+				184CAC8620C7C89500093E3E /* PBXTargetDependency */,
 			);
 			name = RNAgoraExample;
 			productName = "Hello World";
 			productReference = 13B07F961A680F5B00A75B9A /* RNAgoraExample.app */;
 			productType = "com.apple.product-type.application";
+		};
+		184CAC6F20C7C89500093E3E /* RNAgoraExample-Broadcast */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 184CAC8B20C7C89500093E3E /* Build configuration list for PBXNativeTarget "RNAgoraExample-Broadcast" */;
+			buildPhases = (
+				184CAC6C20C7C89500093E3E /* Sources */,
+				184CAC6D20C7C89500093E3E /* Frameworks */,
+				184CAC6E20C7C89500093E3E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RNAgoraExample-Broadcast";
+			productName = "RNAgoraExample-Broadcast";
+			productReference = 184CAC7020C7C89500093E3E /* RNAgoraExample-Broadcast.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		184CAC7920C7C89500093E3E /* RNAgoraExample-BroadcastSetupUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 184CAC8820C7C89500093E3E /* Build configuration list for PBXNativeTarget "RNAgoraExample-BroadcastSetupUI" */;
+			buildPhases = (
+				184CAC7620C7C89500093E3E /* Sources */,
+				184CAC7720C7C89500093E3E /* Frameworks */,
+				184CAC7820C7C89500093E3E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RNAgoraExample-BroadcastSetupUI";
+			productName = "RNAgoraExample-BroadcastSetupUI";
+			productReference = 184CAC7A20C7C89500093E3E /* RNAgoraExample-BroadcastSetupUI.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -595,16 +715,27 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = ZZ4RQ293CV;
+						DevelopmentTeam = E4F2FDQFP9;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 						};
+					};
+					184CAC6F20C7C89500093E3E = {
+						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = E4F2FDQFP9;
+						ProvisioningStyle = Automatic;
+					};
+					184CAC7920C7C89500093E3E = {
+						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = E4F2FDQFP9;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -672,6 +803,8 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* RNAgoraExample */,
+				184CAC6F20C7C89500093E3E /* RNAgoraExample-Broadcast */,
+				184CAC7920C7C89500093E3E /* RNAgoraExample-BroadcastSetupUI */,
 			);
 		};
 /* End PBXProject section */
@@ -941,6 +1074,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		184CAC6E20C7C89500093E3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		184CAC7820C7C89500093E3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -970,16 +1117,47 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		184CAC6C20C7C89500093E3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184CAC7420C7C89500093E3E /* SampleHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		184CAC7620C7C89500093E3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184CAC8020C7C89500093E3E /* BroadcastSetupViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		184CAC8320C7C89500093E3E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 184CAC7920C7C89500093E3E /* RNAgoraExample-BroadcastSetupUI */;
+			targetProxy = 184CAC8220C7C89500093E3E /* PBXContainerItemProxy */;
+		};
+		184CAC8620C7C89500093E3E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 184CAC6F20C7C89500093E3E /* RNAgoraExample-Broadcast */;
+			targetProxy = 184CAC8520C7C89500093E3E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = ZZ4RQ293CV;
+				DEVELOPMENT_TEAM = E4F2FDQFP9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK\"/**";
 				HEADER_SEARCH_PATHS = (
@@ -995,7 +1173,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wilder.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilder.ilive;
 				PRODUCT_NAME = RNAgoraExample;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1004,9 +1182,11 @@
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZZ4RQ293CV;
+				DEVELOPMENT_TEAM = E4F2FDQFP9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK\"/**";
 				HEADER_SEARCH_PATHS = (
@@ -1022,9 +1202,163 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wilder.live;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilder.ilive;
 				PRODUCT_NAME = RNAgoraExample;
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		184CAC8920C7C89500093E3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = E4F2FDQFP9;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "RNAgoraExample-BroadcastSetupUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilder.ilive.BroadcastSetupUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		184CAC8A20C7C89500093E3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = E4F2FDQFP9;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "RNAgoraExample-BroadcastSetupUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilder.ilive.BroadcastSetupUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		184CAC8C20C7C89500093E3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = E4F2FDQFP9;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "RNAgoraExample-Broadcast/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilder.ilive.Broadcast;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		184CAC8D20C7C89500093E3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = E4F2FDQFP9;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "RNAgoraExample-Broadcast/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilder.ilive.Broadcast;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1112,6 +1446,24 @@
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
 				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		184CAC8820C7C89500093E3E /* Build configuration list for PBXNativeTarget "RNAgoraExample-BroadcastSetupUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				184CAC8920C7C89500093E3E /* Debug */,
+				184CAC8A20C7C89500093E3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		184CAC8B20C7C89500093E3E /* Build configuration list for PBXNativeTarget "RNAgoraExample-Broadcast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				184CAC8C20C7C89500093E3E /* Debug */,
+				184CAC8D20C7C89500093E3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
