@@ -18,14 +18,14 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		182CB15C20C905FC00F9FF50 /* Boardcast.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 182CB15920C905CB00F9FF50 /* Boardcast.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		182CB15F20C905FC00F9FF50 /* BoardcastSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 182CB15B20C905CB00F9FF50 /* BoardcastSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		182CB16220C9061300F9FF50 /* libRCTAgora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 182CB15720C905CB00F9FF50 /* libRCTAgora.a */; };
 		184CAC6B20C7BED400093E3E /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
-		184CAD0920C7F27C00093E3E /* Broadcast.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 184CAD0620C7F20E00093E3E /* Broadcast.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		184CAD0C20C7F27C00093E3E /* BroadcastSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 184CAD0820C7F20E00093E3E /* BroadcastSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		185EA3B5204EA85100301DBB /* videoprp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185EA391204EA85100301DBB /* videoprp.framework */; };
 		18855CC9202D6D6A0081BAF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18855CC8202D6D6A0081BAF4 /* Launch Screen.storyboard */; };
 		18C32F0C202D4C260052DF95 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */; };
 		18F9814920A2B02A0011AEB8 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F9812420A2B02A0011AEB8 /* ReplayKit.framework */; };
-		18F981E120A437EC0011AEB8 /* libRCTAgora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F981DF20A430C10011AEB8 /* libRCTAgora.a */; };
 		18F981EE20A4391C0011AEB8 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F981EB20A4391B0011AEB8 /* AgoraRtcEngineKit.framework */; };
 		18F981EF20A4391C0011AEB8 /* AgoraRtcCryptoLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F981EC20A4391B0011AEB8 /* AgoraRtcCryptoLoader.framework */; };
 		18F981F020A4391C0011AEB8 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F981ED20A4391C0011AEB8 /* libcrypto.a */; };
@@ -98,6 +98,41 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
+		182CB15620C905CB00F9FF50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 23AF281C1EEFECD800D771AB;
+			remoteInfo = RCTAgora;
+		};
+		182CB15820C905CB00F9FF50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 182CB00820C8CE7B00F9FF50;
+			remoteInfo = Boardcast;
+		};
+		182CB15A20C905CB00F9FF50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 182CB01220C8CE7B00F9FF50;
+			remoteInfo = BoardcastSetupUI;
+		};
+		182CB15D20C905FC00F9FF50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 182CB00720C8CE7B00F9FF50;
+			remoteInfo = Boardcast;
+		};
+		182CB16020C905FC00F9FF50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 182CB01120C8CE7B00F9FF50;
+			remoteInfo = BoardcastSetupUI;
+		};
 		183345D51FDFCBAB00F62543 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
@@ -167,41 +202,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = EBF21BFA1FC4989A0052F4D5;
 			remoteInfo = "jsinspector-tvOS";
-		};
-		184CAD0520C7F20E00093E3E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 184CACE720C7F1B500093E3E;
-			remoteInfo = Broadcast;
-		};
-		184CAD0720C7F20E00093E3E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 184CACF420C7F1B500093E3E;
-			remoteInfo = BroadcastSetupUI;
-		};
-		184CAD0A20C7F27C00093E3E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 184CACE620C7F1B500093E3E;
-			remoteInfo = Broadcast;
-		};
-		184CAD0D20C7F27C00093E3E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 184CACF320C7F1B500093E3E;
-			remoteInfo = BroadcastSetupUI;
-		};
-		18F981DE20A430C10011AEB8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 23AF281C1EEFECD800D771AB;
-			remoteInfo = RCTAgora;
 		};
 		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -331,8 +331,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				184CAD0C20C7F27C00093E3E /* BroadcastSetupUI.appex in Embed App Extensions */,
-				184CAD0920C7F27C00093E3E /* Broadcast.appex in Embed App Extensions */,
+				182CB15F20C905FC00F9FF50 /* BoardcastSetupUI.appex in Embed App Extensions */,
+				182CB15C20C905FC00F9FF50 /* Boardcast.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +355,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNAgoraExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNAgoraExample/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAgora.xcodeproj; path = "../node_modules/react-native-agoraio/ios/RCTAgora.xcodeproj"; sourceTree = "<group>"; };
 		183D465C202C649E00271F94 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcEngineKit.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcEngineKit.framework"; sourceTree = "<group>"; };
 		183D465D202C649E00271F94 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/libcrypto.a"; sourceTree = "<group>"; };
 		183D465E202C649F00271F94 /* AgoraRtcCryptoLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcCryptoLoader.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcCryptoLoader.framework"; sourceTree = "<group>"; };
@@ -363,7 +364,6 @@
 		18855CC8202D6D6A0081BAF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "RNAgoraExample/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		18F9812420A2B02A0011AEB8 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
-		18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAgora.xcodeproj; path = "../../react-native-agora.git/ios/RCTAgora.xcodeproj"; sourceTree = "<group>"; };
 		18F981EB20A4391B0011AEB8 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcEngineKit.framework; path = "../../react-native-agora.git/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcEngineKit.framework"; sourceTree = "<group>"; };
 		18F981EC20A4391B0011AEB8 /* AgoraRtcCryptoLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcCryptoLoader.framework; path = "../../react-native-agora.git/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcCryptoLoader.framework"; sourceTree = "<group>"; };
 		18F981ED20A4391C0011AEB8 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../react-native-agora.git/ios/RCTAgora/Frameworks/AgoraSDK/libcrypto.a"; sourceTree = "<group>"; };
@@ -397,6 +397,7 @@
 				23C20EE01F0CE1D10095F60C /* VideoToolbox.framework in Frameworks */,
 				23C20EDE1F0CE1C90095F60C /* AudioToolbox.framework in Frameworks */,
 				23C20EDC1F0CE1BD0095F60C /* AVFoundation.framework in Frameworks */,
+				182CB16220C9061300F9FF50 /* libRCTAgora.a in Frameworks */,
 				23C20EDA1F0CE1B30095F60C /* libc++.tbd in Frameworks */,
 				23C20ED81F0CE1A90095F60C /* libresolv.tbd in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -408,7 +409,6 @@
 				184CAC6B20C7BED400093E3E /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
-				18F981E120A437EC0011AEB8 /* libRCTAgora.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 			);
@@ -516,12 +516,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		18F981DB20A430C10011AEB8 /* Products */ = {
+		182CB15120C905CB00F9FF50 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18F981DF20A430C10011AEB8 /* libRCTAgora.a */,
-				184CAD0620C7F20E00093E3E /* Broadcast.appex */,
-				184CAD0820C7F20E00093E3E /* BroadcastSetupUI.appex */,
+				182CB15720C905CB00F9FF50 /* libRCTAgora.a */,
+				182CB15920C905CB00F9FF50 /* Boardcast.appex */,
+				182CB15B20C905CB00F9FF50 /* BoardcastSetupUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -572,7 +572,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */,
+				182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -633,8 +633,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				184CAD0B20C7F27C00093E3E /* PBXTargetDependency */,
-				184CAD0E20C7F27C00093E3E /* PBXTargetDependency */,
+				182CB15E20C905FC00F9FF50 /* PBXTargetDependency */,
+				182CB16120C905FC00F9FF50 /* PBXTargetDependency */,
 			);
 			name = RNAgoraExample;
 			productName = "Hello World";
@@ -652,7 +652,7 @@
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = E4F2FDQFP9;
+						DevelopmentTeam = Z4Q2D6MMMF;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -678,8 +678,8 @@
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
 				{
-					ProductGroup = 18F981DB20A430C10011AEB8 /* Products */;
-					ProjectRef = 18F981DA20A430C10011AEB8 /* RCTAgora.xcodeproj */;
+					ProductGroup = 182CB15120C905CB00F9FF50 /* Products */;
+					ProjectRef = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
 				},
 				{
 					ProductGroup = 5E91572E1DD0AC6500FF2AA8 /* Products */;
@@ -786,6 +786,27 @@
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		182CB15720C905CB00F9FF50 /* libRCTAgora.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTAgora.a;
+			remoteRef = 182CB15620C905CB00F9FF50 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		182CB15920C905CB00F9FF50 /* Boardcast.appex */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.app-extension";
+			path = Boardcast.appex;
+			remoteRef = 182CB15820C905CB00F9FF50 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		182CB15B20C905CB00F9FF50 /* BoardcastSetupUI.appex */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.app-extension";
+			path = BoardcastSetupUI.appex;
+			remoteRef = 182CB15A20C905CB00F9FF50 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		183345D61FDFCBAB00F62543 /* libfishhook.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -854,27 +875,6 @@
 			fileType = archive.ar;
 			path = "libjsinspector-tvOS.a";
 			remoteRef = 183D4560202C3A2F00271F94 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		184CAD0620C7F20E00093E3E /* Broadcast.appex */ = {
-			isa = PBXReferenceProxy;
-			fileType = "wrapper.app-extension";
-			path = Broadcast.appex;
-			remoteRef = 184CAD0520C7F20E00093E3E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		184CAD0820C7F20E00093E3E /* BroadcastSetupUI.appex */ = {
-			isa = PBXReferenceProxy;
-			fileType = "wrapper.app-extension";
-			path = BroadcastSetupUI.appex;
-			remoteRef = 184CAD0720C7F20E00093E3E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		18F981DF20A430C10011AEB8 /* libRCTAgora.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTAgora.a;
-			remoteRef = 18F981DE20A430C10011AEB8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
@@ -1040,15 +1040,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		184CAD0B20C7F27C00093E3E /* PBXTargetDependency */ = {
+		182CB15E20C905FC00F9FF50 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Broadcast;
-			targetProxy = 184CAD0A20C7F27C00093E3E /* PBXContainerItemProxy */;
+			name = Boardcast;
+			targetProxy = 182CB15D20C905FC00F9FF50 /* PBXContainerItemProxy */;
 		};
-		184CAD0E20C7F27C00093E3E /* PBXTargetDependency */ = {
+		182CB16120C905FC00F9FF50 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = BroadcastSetupUI;
-			targetProxy = 184CAD0D20C7F27C00093E3E /* PBXContainerItemProxy */;
+			name = BoardcastSetupUI;
+			targetProxy = 182CB16020C905FC00F9FF50 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1061,7 +1061,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = E4F2FDQFP9;
+				DEVELOPMENT_TEAM = Z4Q2D6MMMF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK\"/**";
 				HEADER_SEARCH_PATHS = (
@@ -1090,7 +1090,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = E4F2FDQFP9;
+				DEVELOPMENT_TEAM = Z4Q2D6MMMF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK\"/**";
 				HEADER_SEARCH_PATHS = (
