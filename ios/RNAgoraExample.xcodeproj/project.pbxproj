@@ -18,9 +18,10 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		182CB15C20C905FC00F9FF50 /* Boardcast.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 182CB15920C905CB00F9FF50 /* Boardcast.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		182CB15F20C905FC00F9FF50 /* BoardcastSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 182CB15B20C905CB00F9FF50 /* BoardcastSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		182CB16220C9061300F9FF50 /* libRCTAgora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 182CB15720C905CB00F9FF50 /* libRCTAgora.a */; };
+		18344E8020CA37F2003EF0EF /* Boardcast.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 18344E7D20CA37F2003EF0EF /* Boardcast.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		18344E8320CA37F2003EF0EF /* BoardcastSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 18344E7F20CA37F2003EF0EF /* BoardcastSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1837FAC520C94B7700DDC4ED /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1837FAC420C94B5F00DDC4ED /* libSplashScreen.a */; };
 		184CAC6B20C7BED400093E3E /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		185EA3B5204EA85100301DBB /* videoprp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185EA391204EA85100301DBB /* videoprp.framework */; };
 		18855CC9202D6D6A0081BAF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18855CC8202D6D6A0081BAF4 /* Launch Screen.storyboard */; };
@@ -105,34 +106,6 @@
 			remoteGlobalIDString = 23AF281C1EEFECD800D771AB;
 			remoteInfo = RCTAgora;
 		};
-		182CB15820C905CB00F9FF50 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 182CB00820C8CE7B00F9FF50;
-			remoteInfo = Boardcast;
-		};
-		182CB15A20C905CB00F9FF50 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 182CB01220C8CE7B00F9FF50;
-			remoteInfo = BoardcastSetupUI;
-		};
-		182CB15D20C905FC00F9FF50 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 182CB00720C8CE7B00F9FF50;
-			remoteInfo = Boardcast;
-		};
-		182CB16020C905FC00F9FF50 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 182CB01120C8CE7B00F9FF50;
-			remoteInfo = BoardcastSetupUI;
-		};
 		183345D51FDFCBAB00F62543 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
@@ -188,6 +161,41 @@
 			proxyType = 2;
 			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
 			remoteInfo = "privatedata-tvOS";
+		};
+		18344E7C20CA37F2003EF0EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 182CB00820C8CE7B00F9FF50;
+			remoteInfo = Boardcast;
+		};
+		18344E7E20CA37F2003EF0EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 182CB01220C8CE7B00F9FF50;
+			remoteInfo = BoardcastSetupUI;
+		};
+		18344E8120CA37F2003EF0EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 182CB00720C8CE7B00F9FF50;
+			remoteInfo = Boardcast;
+		};
+		18344E8420CA37F2003EF0EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 182CB01120C8CE7B00F9FF50;
+			remoteInfo = BoardcastSetupUI;
+		};
+		1837FAC320C94B5F00DDC4ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1837FA9B20C94B5F00DDC4ED /* SplashScreen.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D7682761D8E76B80014119E;
+			remoteInfo = SplashScreen;
 		};
 		183D455E202C3A2F00271F94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -331,8 +339,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				182CB15F20C905FC00F9FF50 /* BoardcastSetupUI.appex in Embed App Extensions */,
-				182CB15C20C905FC00F9FF50 /* Boardcast.appex in Embed App Extensions */,
+				18344E8320CA37F2003EF0EF /* BoardcastSetupUI.appex in Embed App Extensions */,
+				18344E8020CA37F2003EF0EF /* Boardcast.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +364,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNAgoraExample/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAgora.xcodeproj; path = "../node_modules/react-native-agoraio/ios/RCTAgora.xcodeproj"; sourceTree = "<group>"; };
+		1837FA9B20C94B5F00DDC4ED /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		183D465C202C649E00271F94 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcEngineKit.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcEngineKit.framework"; sourceTree = "<group>"; };
 		183D465D202C649E00271F94 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/libcrypto.a"; sourceTree = "<group>"; };
 		183D465E202C649F00271F94 /* AgoraRtcCryptoLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcCryptoLoader.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcCryptoLoader.framework"; sourceTree = "<group>"; };
@@ -392,6 +401,7 @@
 				185EA3B5204EA85100301DBB /* videoprp.framework in Frameworks */,
 				18C32F0C202D4C260052DF95 /* AssetsLibrary.framework in Frameworks */,
 				23C20EE61F0CE1EB0095F60C /* CoreTelephony.framework in Frameworks */,
+				1837FAC520C94B7700DDC4ED /* libSplashScreen.a in Frameworks */,
 				23C20EE31F0CE1E10095F60C /* CoreMedia.framework in Frameworks */,
 				23C20EE41F0CE1E10095F60C /* CoreMotion.framework in Frameworks */,
 				23C20EE01F0CE1D10095F60C /* VideoToolbox.framework in Frameworks */,
@@ -520,8 +530,16 @@
 			isa = PBXGroup;
 			children = (
 				182CB15720C905CB00F9FF50 /* libRCTAgora.a */,
-				182CB15920C905CB00F9FF50 /* Boardcast.appex */,
-				182CB15B20C905CB00F9FF50 /* BoardcastSetupUI.appex */,
+				18344E7D20CA37F2003EF0EF /* Boardcast.appex */,
+				18344E7F20CA37F2003EF0EF /* BoardcastSetupUI.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1837FA9C20C94B5F00DDC4ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1837FAC420C94B5F00DDC4ED /* libSplashScreen.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -572,6 +590,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				1837FA9B20C94B5F00DDC4ED /* SplashScreen.xcodeproj */,
 				182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -633,8 +652,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				182CB15E20C905FC00F9FF50 /* PBXTargetDependency */,
-				182CB16120C905FC00F9FF50 /* PBXTargetDependency */,
+				18344E8220CA37F2003EF0EF /* PBXTargetDependency */,
+				18344E8520CA37F2003EF0EF /* PBXTargetDependency */,
 			);
 			name = RNAgoraExample;
 			productName = "Hello World";
@@ -721,6 +740,10 @@
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
+				{
+					ProductGroup = 1837FA9C20C94B5F00DDC4ED /* Products */;
+					ProjectRef = 1837FA9B20C94B5F00DDC4ED /* SplashScreen.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -793,20 +816,6 @@
 			remoteRef = 182CB15620C905CB00F9FF50 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		182CB15920C905CB00F9FF50 /* Boardcast.appex */ = {
-			isa = PBXReferenceProxy;
-			fileType = "wrapper.app-extension";
-			path = Boardcast.appex;
-			remoteRef = 182CB15820C905CB00F9FF50 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		182CB15B20C905CB00F9FF50 /* BoardcastSetupUI.appex */ = {
-			isa = PBXReferenceProxy;
-			fileType = "wrapper.app-extension";
-			path = BoardcastSetupUI.appex;
-			remoteRef = 182CB15A20C905CB00F9FF50 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		183345D61FDFCBAB00F62543 /* libfishhook.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -861,6 +870,27 @@
 			fileType = archive.ar;
 			path = "libprivatedata-tvOS.a";
 			remoteRef = 183345F11FDFCBAB00F62543 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		18344E7D20CA37F2003EF0EF /* Boardcast.appex */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.app-extension";
+			path = Boardcast.appex;
+			remoteRef = 18344E7C20CA37F2003EF0EF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		18344E7F20CA37F2003EF0EF /* BoardcastSetupUI.appex */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.app-extension";
+			path = BoardcastSetupUI.appex;
+			remoteRef = 18344E7E20CA37F2003EF0EF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1837FAC420C94B5F00DDC4ED /* libSplashScreen.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSplashScreen.a;
+			remoteRef = 1837FAC320C94B5F00DDC4ED /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		183D455F202C3A2F00271F94 /* libjsinspector.a */ = {
@@ -1040,15 +1070,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		182CB15E20C905FC00F9FF50 /* PBXTargetDependency */ = {
+		18344E8220CA37F2003EF0EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Boardcast;
-			targetProxy = 182CB15D20C905FC00F9FF50 /* PBXContainerItemProxy */;
+			targetProxy = 18344E8120CA37F2003EF0EF /* PBXContainerItemProxy */;
 		};
-		182CB16120C905FC00F9FF50 /* PBXTargetDependency */ = {
+		18344E8520CA37F2003EF0EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BoardcastSetupUI;
-			targetProxy = 182CB16020C905FC00F9FF50 /* PBXContainerItemProxy */;
+			targetProxy = 18344E8420CA37F2003EF0EF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1063,10 +1093,11 @@
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = Z4Q2D6MMMF;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK\"/**";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/**";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = RNAgoraExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1093,10 +1124,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z4Q2D6MMMF;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK\"/**";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/**";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = RNAgoraExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

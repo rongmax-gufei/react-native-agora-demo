@@ -13,11 +13,14 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-import LiveView from './src'
 
 import {Alert} from 'react-native';
+import {Toast} from 'antd-mobile'
+import SplashScreen from 'react-native-splash-screen';
 import RNRestart from 'react-native-restart';
 import {setJSExceptionHandler} from 'react-native-exception-handler';
+
+import LiveView from './src';
 
 const errorHandler = (e, isFatal) => {
     if (isFatal) {
@@ -53,6 +56,10 @@ export default class App extends Component {
             showLive: false,
             err: undefined
         };
+    }
+
+    componentDidMount() {
+        SplashScreen.hide();
     }
 
     handleJoin = () => {
