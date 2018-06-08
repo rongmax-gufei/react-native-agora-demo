@@ -6,21 +6,22 @@
 
 import React, {Component} from 'react';
 import {
+    Alert,
+    Keyboard,
     StyleSheet,
     Text,
-    View,
     TextInput,
     TouchableOpacity,
+    View,
 } from 'react-native';
 
-
-import {Alert} from 'react-native';
 import {Toast} from 'antd-mobile'
 import SplashScreen from 'react-native-splash-screen';
 import RNRestart from 'react-native-restart';
 import {setJSExceptionHandler} from 'react-native-exception-handler';
 
-import LiveView from './src';
+import LiveView from './src/agora/index';
+import {isIphone47} from './src/libs/screenUtils'
 
 const errorHandler = (e, isFatal) => {
     if (isFatal) {
@@ -60,6 +61,11 @@ export default class App extends Component {
 
     componentDidMount() {
         SplashScreen.hide();
+    }
+
+    containerTouched = () => {
+        Keyboard.dismiss()
+        return false
     }
 
     handleJoin = () => {
@@ -110,46 +116,46 @@ export default class App extends Component {
             )
         } else {
             return (
-                <View style={styles.container}>
+                    <View style={styles.container} onStartShouldSetResponder={this.containerTouched}>
 
-                    <Text style={styles.welcome}>声网 agora.io</Text>
+                        <Text style={styles.welcome}>声网 agora.io</Text>
 
-                    <Text style={styles.textChannelNo}>channel</Text>
-                    <TextInput style={styles.textInput} placeholder={'Joining in the same channel'}
-                               keyboardType="numeric"
-                               onChangeText={(value) => this.setState({channel: value})} value={channel}/>
+                        <Text style={styles.textChannelNo}>channel</Text>
+                        <TextInput style={styles.textInput} placeholder={'Joining in the same channel'}
+                                   keyboardType="numeric"
+                                   onChangeText={(value) => this.setState({channel: value})} value={channel}/>
 
-                    <Text style={styles.textUserId}>uid</Text>
-                    <TextInput style={styles.textInput} placeholder={'Unique id for each member in one channel'}
-                               keyboardType="numeric"
-                               multiline={false}
-                               maxLength={6}
-                               onChangeText={(value) => this.setState({uid: value})} value={uid}/>
+                        <Text style={styles.textUserId}>uid</Text>
+                        <TextInput style={styles.textInput} placeholder={'Unique id for each member in one channel'}
+                                   keyboardType="numeric"
+                                   multiline={false}
+                                   maxLength={6}
+                                   onChangeText={(value) => this.setState({uid: value})} value={uid}/>
 
-                    <Text style={styles.textRole}>role</Text>
-                    <View style={styles.roleWrap}>
+                        <Text style={styles.textRole}>role</Text>
+                        <View style={styles.roleWrap}>
+                            <TouchableOpacity
+                                style={leftStyle}
+                                onPress={this.handleSegmentChange.bind(this, 1)}>
+                                <Text style={leftTextStyle}>Broadcaster</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={rightStyle}
+                                onPress={this.handleSegmentChange.bind(this, 2)}>
+                                <Text style={rightTextStyle}>Audience</Text>
+                            </TouchableOpacity>
+                        </View>
+
                         <TouchableOpacity
-                            style={leftStyle}
-                            onPress={this.handleSegmentChange.bind(this, 1)}>
-                            <Text style={leftTextStyle}>Broadcaster</Text>
+                            style={styles.button}
+                            onPress={this.handleJoin}>
+                            <Text style={styles.buttonText}>Enter</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity
-                            style={rightStyle}
-                            onPress={this.handleSegmentChange.bind(this, 2)}>
-                            <Text style={rightTextStyle}>Audience</Text>
-                        </TouchableOpacity>
+
+                        {!!err && <Text style={styles.errorText}>Error： {err}</Text>}
+
+                        <Text style={styles.companyText}>Powered by agora.io inc.</Text>
                     </View>
-
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={this.handleJoin}>
-                        <Text style={styles.buttonText}>Enter</Text>
-                    </TouchableOpacity>
-
-                    {!!err && <Text style={styles.errorText}>Error： {err}</Text>}
-
-                    <Text style={styles.companyText}>Powered by agora.io inc.</Text>
-                </View>
             );
         }
     }
@@ -165,8 +171,8 @@ const styles = StyleSheet.create({
     welcome: {
         fontSize: 25,
         textAlign: 'center',
-        marginTop: 100,
-        marginBottom: 60,
+        marginTop: isIphone47 ? 50 : 100,
+        marginBottom: isIphone47 ? 50 : 60,
         color: 'black'
     },
     textChannelNo: {
@@ -260,6 +266,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: 'black',
         alignSelf: 'center',
-        bottom: 54
+        bottom: isIphone47 ? 20 : 54
     }
 });

@@ -232,24 +232,24 @@ export default class RNAgoraExample extends Component {
                             style={{alignSelf: 'center', marginBottom: -10}}
                             onPress={this.handlerCancel}
                             imgStyle={{width: 55, height: 55}}
-                            source={require('../images/hangup.png')}
+                            source={require('../../images/hangup.png')}
                         />
                         <View style={styles.bottomView}>
                             <OperateButton
                                 onPress={this.handlerBroadcast}
-                                source={require('../images/btn_request_broadcast.png')}
+                                source={require('../../images/btn_request_broadcast.png')}
                             />
                             <OperateButton
                                 onPress={this.handlerSwitchCamera}
-                                source={isSwitchCamera ? require('../images/switch_camera.png') : require('../images/unswitch-camera.png')}
+                                source={isSwitchCamera ? require('../../images/switch_camera.png') : require('../../images/unswitch-camera.png')}
                             />
                             <OperateButton
                                 onPress={this.handlerMuteAllRemoteAudioStreams}
-                                source={isMute ? require('../images/mute.png') : require('../images/unmute.png')}
+                                source={isMute ? require('../../images/mute.png') : require('../../images/unmute.png')}
                             />
                             <OperateButton
                                 onPress={this.handlerChangeVideo}
-                                source={disableVideo ? require('../images/cameraoff.png') : require('../images/cameraon.png')}
+                                source={disableVideo ? require('../../images/cameraoff.png') : require('../../images/cameraon.png')}
                             />
                         </View>
                     </View>
