@@ -60,7 +60,7 @@ export default class RNAgoraExample extends Component {
         //加入房间
         RtcEngine.joinChannel(this.props.channel, parseInt(this.props.uid));
 
-        // 启用说话者音量提示
+        //启用说话者音量提示
         RtcEngine.enableAudioVolumeIndication(500, 3);
 
         //所有的原生通知统一管理
@@ -155,7 +155,6 @@ export default class RNAgoraExample extends Component {
     };
 
     handlerSetEnableSpeakerphone = () => {
-        handlerMuteAllRemoteAudioStreams
         this.setState({
             isSpeaker: !this.state.isSpeaker
         }, () => {
