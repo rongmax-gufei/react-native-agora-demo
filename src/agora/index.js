@@ -15,9 +15,11 @@ import {
     Modal
 } from 'react-native';
 
-const {width} = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
-import {RtcEngine, AgoraView} from 'react-native-agoraio'
+import {RtcEngine, AgoraView} from 'react-native-agoraio';
+
+import {screenW, screenH} from '../libs/screenUtils';
 
 export default class RNAgoraExample extends Component {
 
@@ -127,6 +129,10 @@ export default class RNAgoraExample extends Component {
     }
 
     handlerCancel = () => {
+
+        if (this.state.isBroadcasting)
+            RtcEngine.stopBroadcasting()
+
         RtcEngine.leaveChannel();
         RtcEngine.destroy();
 
@@ -201,8 +207,7 @@ export default class RNAgoraExample extends Component {
             <TouchableOpacity
                 activeOpacity={1}
                 onPress={this.handlerHideButtons.bind(this)}
-                style={styles.container}
-            >
+                style={styles.container}>
                 <AgoraView style={styles.localView} showLocalVideo={true}/>
                 <View style={styles.absView}>
                     {!visible ?
@@ -212,13 +217,11 @@ export default class RNAgoraExample extends Component {
                                     <TouchableOpacity
                                         activeOpacity={1}
                                         onPress={() => this.onPressVideo.bind(this, v)}
-                                        key={k}
-                                    >
+                                        key={k}>
                                         <AgoraView
                                             style={styles.remoteView}
                                             zOrderMediaOverlay={true}
-                                            remoteUid={v}
-                                        />
+                                            remoteUid={v}/>
                                     </TouchableOpacity>
                                 )
                             })}
@@ -324,8 +327,8 @@ const styles = StyleSheet.create({
         flex: 1
     },
     remoteView: {
-        width: (width - 40) / 3,
-        height: (width - 40) / 3,
+        width: (screenW - 20) / 3,
+        height: (screenH - 20) / 3,
         margin: 5
     },
     bottomView: {

@@ -23,8 +23,8 @@
 		18344E8320CA37F2003EF0EF /* BoardcastSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 18344E7F20CA37F2003EF0EF /* BoardcastSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1837FAC520C94B7700DDC4ED /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1837FAC420C94B5F00DDC4ED /* libSplashScreen.a */; };
 		184CAC6B20C7BED400093E3E /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
-		185EA3B5204EA85100301DBB /* videoprp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185EA391204EA85100301DBB /* videoprp.framework */; };
 		18855CC9202D6D6A0081BAF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18855CC8202D6D6A0081BAF4 /* Launch Screen.storyboard */; };
+		18AA9E4520D11CE00045D802 /* videoprp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AA9E4420D11CDF0045D802 /* videoprp.framework */; };
 		18C32F0C202D4C260052DF95 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */; };
 		18F9814920A2B02A0011AEB8 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F9812420A2B02A0011AEB8 /* ReplayKit.framework */; };
 		18F981EE20A4391C0011AEB8 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F981EB20A4391B0011AEB8 /* AgoraRtcEngineKit.framework */; };
@@ -365,11 +365,9 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAgora.xcodeproj; path = "../node_modules/react-native-agoraio/ios/RCTAgora.xcodeproj"; sourceTree = "<group>"; };
 		1837FA9B20C94B5F00DDC4ED /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
-		183D465C202C649E00271F94 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcEngineKit.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcEngineKit.framework"; sourceTree = "<group>"; };
-		183D465E202C649F00271F94 /* AgoraRtcCryptoLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcCryptoLoader.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcCryptoLoader.framework"; sourceTree = "<group>"; };
 		184CAC7C20C7C89500093E3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		185EA391204EA85100301DBB /* videoprp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = videoprp.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/videoprp.framework"; sourceTree = "<group>"; };
 		18855CC8202D6D6A0081BAF4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "RNAgoraExample/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		18AA9E4420D11CDF0045D802 /* videoprp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = videoprp.framework; path = "../node_modules/react-native-agoraio/ios/RCTAgora/Libraries/AgoraBeauty/videoprp.framework"; sourceTree = "<group>"; };
 		18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		18F9812420A2B02A0011AEB8 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		18F981EB20A4391B0011AEB8 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcEngineKit.framework; path = "../../react-native-agora.git/ios/RCTAgora/Frameworks/AgoraSDK/AgoraRtcEngineKit.framework"; sourceTree = "<group>"; };
@@ -393,11 +391,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AA9E4520D11CE00045D802 /* videoprp.framework in Frameworks */,
 				18F981EE20A4391C0011AEB8 /* AgoraRtcEngineKit.framework in Frameworks */,
 				18F981EF20A4391C0011AEB8 /* AgoraRtcCryptoLoader.framework in Frameworks */,
 				18F981F020A4391C0011AEB8 /* libcrypto.a in Frameworks */,
 				18F9814920A2B02A0011AEB8 /* ReplayKit.framework in Frameworks */,
-				185EA3B5204EA85100301DBB /* videoprp.framework in Frameworks */,
 				18C32F0C202D4C260052DF95 /* AssetsLibrary.framework in Frameworks */,
 				23C20EE61F0CE1EB0095F60C /* CoreTelephony.framework in Frameworks */,
 				1837FAC520C94B7700DDC4ED /* libSplashScreen.a in Frameworks */,
@@ -546,14 +544,12 @@
 		23C20ED61F0CE1A90095F60C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18AA9E4420D11CDF0045D802 /* videoprp.framework */,
 				18F981EC20A4391B0011AEB8 /* AgoraRtcCryptoLoader.framework */,
 				18F981EB20A4391B0011AEB8 /* AgoraRtcEngineKit.framework */,
 				18F981ED20A4391C0011AEB8 /* libcrypto.a */,
 				18F9812420A2B02A0011AEB8 /* ReplayKit.framework */,
-				185EA391204EA85100301DBB /* videoprp.framework */,
 				18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */,
-				183D465E202C649F00271F94 /* AgoraRtcCryptoLoader.framework */,
-				183D465C202C649E00271F94 /* AgoraRtcEngineKit.framework */,
 				23C20EE51F0CE1EB0095F60C /* CoreTelephony.framework */,
 				23C20EE11F0CE1E10095F60C /* CoreMedia.framework */,
 				23C20EE21F0CE1E10095F60C /* CoreMotion.framework */,
@@ -1091,16 +1087,22 @@
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = Z4Q2D6MMMF;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Libraries/AgoraEngine/**",
+					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Libraries/AgoraBeauty/**",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = RNAgoraExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK\"/**";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Libraries/AgoraBeauty/**",
+					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Libraries/AgoraEngine/**",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1122,16 +1124,22 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z4Q2D6MMMF;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Libraries/AgoraEngine/**",
+					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Libraries/AgoraBeauty/**",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = RNAgoraExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Frameworks/AgoraSDK\"/**";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Libraries/AgoraBeauty/**",
+					"$(SRCROOT)/../node_modules/react-native-agoraio/ios/RCTAgora/Libraries/AgoraEngine/**",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
