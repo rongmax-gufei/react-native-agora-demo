@@ -154,7 +154,7 @@ export default class RNAgoraExample extends Component {
         this.setState({
             enableBroadcast: !this.state.enableBroadcast
         }, () => {
-            if (enableBroadcast)
+            if (this.state.enableBroadcast)
                 RtcEngine.startBroadcasting()
             else {
                 RtcEngine.stopBroadcasting()
@@ -226,7 +226,7 @@ export default class RNAgoraExample extends Component {
                 onPress={this.handlerHideButtons}
                 style={styles.container}>
                 {!isBroadcasting && <AgoraVideoView style={styles.localView} showLocalVideo/>}
-                {isBroadcasting && <AgoraScreenView style={styles.localView} showSharedScreen/>}
+                {isBroadcasting && <AgoraScreenShareView style={styles.localView} showSharedScreen/>}
                 <View style={styles.absView}>
                     {!visible ?
                         <View style={styles.videoView}>
@@ -236,7 +236,7 @@ export default class RNAgoraExample extends Component {
                                         activeOpacity={1}
                                         onPress={() => this.onPressVideo.bind(this, v)}
                                         key={k}>
-                                        <AgoraView
+                                        <AgoraVideoView
                                             style={styles.remoteView}
                                             zOrderMediaOverlay
                                             remoteUid={v}/>
@@ -290,7 +290,7 @@ export default class RNAgoraExample extends Component {
                             visible: false
                         })}
                     >
-                        <AgoraView
+                        <AgoraVideoView
                             style={{flex: 1}}
                             zOrderMediaOverlay
                             remoteUid={this.state.selectUid}
