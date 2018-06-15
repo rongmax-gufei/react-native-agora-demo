@@ -11,7 +11,6 @@ import {
     View,
     TouchableOpacity,
     Image,
-    Dimensions,
     Modal
 } from 'react-native'
 
@@ -138,18 +137,6 @@ export default class RNAgoraExample extends Component {
         RtcEngine.removeEmitter()
     }
 
-    handlerCancel = () => {
-
-        if (this.state.isBroadcasting)
-            RtcEngine.stopBroadcasting()
-
-        RtcEngine.leaveChannel()
-        RtcEngine.destroy()
-
-        const {onCancel} = this.props
-        onCancel()
-    }
-
     handlerBroadcast = () => {
         this.setState({
             enableBroadcast: !this.state.enableBroadcast
@@ -209,8 +196,20 @@ export default class RNAgoraExample extends Component {
         })
     }
 
+    handlerCancel = () => {
+
+        if (this.state.isBroadcasting)
+            RtcEngine.stopBroadcasting()
+
+        RtcEngine.leaveChannel()
+        RtcEngine.destroy()
+
+        const {onCancel} = this.props
+        onCancel()
+    }
+
     render() {
-        const {isBroadcasting, isSwitchCamera, isMute, isSpeaker, disableVideo, isHideButtons, remotes, isJoinSuccess, visible} = this.state
+        const {isBroadcasting, isSwitchCamera, isMute, disableVideo, isHideButtons, remotes, isJoinSuccess, visible} = this.state
 
         if (!isJoinSuccess) {
             return (
@@ -226,7 +225,7 @@ export default class RNAgoraExample extends Component {
                 onPress={this.handlerHideButtons}
                 style={styles.container}>
                 {!isBroadcasting && <AgoraVideoView style={styles.localView} showLocalVideo/>}
-                {isBroadcasting && <AgoraScreenShareView style={styles.localView} showSharedScreen/>}
+                {isBroadcasting && <AgoraScreenShareView style={styles.sharedView} showSharedScreen/>}
                 <View style={styles.absView}>
                     {!visible ?
                         <View style={styles.videoView}>
@@ -278,23 +277,20 @@ export default class RNAgoraExample extends Component {
 
                 <Modal
                     visible={visible}
-                    presentationStyle={'fullScreen'}
-                    animationType={'slide'}
+                    presentationStyle='fullScreen'
+                    animationType='slide'
                     onRequestClose={() => {
-                    }}
-                >
+                    }}>
                     <TouchableOpacity
                         activeOpacity={1}
                         style={{flex: 1}}
                         onPress={() => this.setState({
                             visible: false
-                        })}
-                    >
+                        })}>
                         <AgoraVideoView
                             style={{flex: 1}}
                             zOrderMediaOverlay
-                            remoteUid={this.state.selectUid}
-                        />
+                            remoteUid={this.state.selectUid}/>
                     </TouchableOpacity>
                 </Modal>
             </TouchableOpacity>
@@ -311,12 +307,10 @@ class OperateButton extends PureComponent {
             <TouchableOpacity
                 style={style}
                 onPress={onPress}
-                activeOpacity={.7}
-            >
+                activeOpacity={0.7}>
                 <Image
                     style={imgStyle}
-                    source={source}
-                />
+                    source={source}/>
             </TouchableOpacity>
         )
     }
@@ -343,6 +337,10 @@ const styles = StyleSheet.create({
     },
     localView: {
         flex: 1
+    },
+    sharedView: {
+        flex: 1,
+        backgroundColor: 'red'
     },
     remoteView: {
         width: (screenW - 20) / 3,

@@ -4,7 +4,7 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import {
     Alert,
     Keyboard,
@@ -13,14 +13,13 @@ import {
     TextInput,
     TouchableOpacity,
     View,
-} from 'react-native';
+} from 'react-native'
 
-import {Toast} from 'antd-mobile'
-import SplashScreen from 'react-native-splash-screen';
-import RNRestart from 'react-native-restart';
-import {setJSExceptionHandler} from 'react-native-exception-handler';
+import SplashScreen from 'react-native-splash-screen'
+import RNRestart from 'react-native-restart'
+import {setJSExceptionHandler} from 'react-native-exception-handler'
 
-import LiveView from './src/agora/index';
+import LiveView from './src/agora/index'
 import {isIphone47} from './src/libs/screenUtils'
 
 const errorHandler = (e, isFatal) => {
@@ -35,37 +34,32 @@ const errorHandler = (e, isFatal) => {
             [{
                 text: 'Restart',
                 onPress: () => {
-                    RNRestart.Restart();
+                    RNRestart.Restart()
                 }
             }]
-        );
+        )
     } else {
-        console.log(e); // So that we can see it in the ADB logs in case of Android if needed
+        console.log(e) // So that we can see it in the ADB logs in case of Android if needed
     }
-};
+}
 
-setJSExceptionHandler(errorHandler);
+setJSExceptionHandler(errorHandler)
 
 export default class App extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            channel: '00001', //default '00001'
-            uid: '0',         //default 0
-            role: 1,          //1:Broadcaster 2:Audience
+            channel: '00001',
+            uid: '0',
+            role: 1, // 1:Broadcaster 2:Audience
             showLive: false,
             err: undefined
-        };
+        }
     }
 
     componentDidMount() {
-        SplashScreen.hide();
-    }
-
-    containerTouched = () => {
-        Keyboard.dismiss()
-        return false
+        SplashScreen.hide()
     }
 
     handleJoin = () => {
@@ -82,18 +76,18 @@ export default class App extends Component {
                 showLive: true
             })
         }
-    };
+    }
 
     handleCancel = (err) => {
         this.setState({
             showLive: false,
             err
         })
-    };
+    }
 
     handleSegmentChange = (role) => {
         this.setState({
-            role: role
+            role
         })
     }
 
@@ -101,14 +95,19 @@ export default class App extends Component {
         return this.state.role === 1
     }
 
+    containerTouched = () => {
+        Keyboard.dismiss()
+        return false
+    }
+
     render() {
-        const {channel, uid, role, showLive, err} = this.state;
+        const {channel, uid, role, showLive, err} = this.state
 
-        let leftStyle = this.isBroadcaster ? styles.roleLeftSelected : styles.roleLeftUnSelected
-        let leftTextStyle = this.isBroadcaster ? styles.textRoleSelected : styles.textRoleUnSelected
+        const leftStyle = this.isBroadcaster ? styles.roleLeftSelected : styles.roleLeftUnSelected
+        const leftTextStyle = this.isBroadcaster ? styles.textRoleSelected : styles.textRoleUnSelected
 
-        let rightStyle = this.isBroadcaster ? styles.roleRightUnSelected : styles.roleRightSelected
-        let rightTextStyle = this.isBroadcaster ? styles.textRoleUnSelected : styles.textRoleSelected
+        const rightStyle = this.isBroadcaster ? styles.roleRightUnSelected : styles.roleRightSelected
+        const rightTextStyle = this.isBroadcaster ? styles.textRoleUnSelected : styles.textRoleSelected
 
         if (showLive) {
             return (
@@ -121,16 +120,20 @@ export default class App extends Component {
                         <Text style={styles.welcome}>声网 agora.io</Text>
 
                         <Text style={styles.textChannelNo}>channel</Text>
-                        <TextInput style={styles.textInput} placeholder={'Joining in the same channel'}
+                        <TextInput style={styles.textInput}
+                                   placeholder='Joining in the same channel'
                                    keyboardType="numeric"
-                                   onChangeText={(value) => this.setState({channel: value})} value={channel}/>
+                                   onChangeText={value => this.setState({channel: value})}
+                                   value={channel}/>
 
                         <Text style={styles.textUserId}>uid</Text>
-                        <TextInput style={styles.textInput} placeholder={'Unique id for each member in one channel'}
+                        <TextInput style={styles.textInput}
+                                   placeholder='Unique id for each member in one channel'
                                    keyboardType="numeric"
                                    multiline={false}
                                    maxLength={6}
-                                   onChangeText={(value) => this.setState({uid: value})} value={uid}/>
+                                   onChangeText={value => this.setState({uid: value})}
+                                   value={uid}/>
 
                         <Text style={styles.textRole}>role</Text>
                         <View style={styles.roleWrap}>
@@ -156,7 +159,7 @@ export default class App extends Component {
 
                         <Text style={styles.companyText}>Powered by agora.io inc.</Text>
                     </View>
-            );
+            )
         }
     }
 }
@@ -268,4 +271,4 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         bottom: isIphone47 ? 20 : 54
     }
-});
+})
