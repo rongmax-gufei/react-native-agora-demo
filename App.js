@@ -19,6 +19,8 @@ import SplashScreen from 'react-native-splash-screen'
 import RNRestart from 'react-native-restart'
 import {setJSExceptionHandler} from 'react-native-exception-handler'
 
+import {Toast} from 'antd-mobile'
+
 import LiveView from './src/agora/index'
 import {isIphone47} from './src/libs/screenUtils'
 
@@ -62,6 +64,15 @@ export default class App extends Component {
         SplashScreen.hide()
     }
 
+    get isBroadcaster() {
+        return this.state.role === 1
+    }
+
+    containerTouched = () => {
+        Keyboard.dismiss()
+        return false
+    }
+
     handleJoin = () => {
         if (this.state.channel === '') {
             this.setState({
@@ -91,15 +102,6 @@ export default class App extends Component {
         })
     }
 
-    get isBroadcaster() {
-        return this.state.role === 1
-    }
-
-    containerTouched = () => {
-        Keyboard.dismiss()
-        return false
-    }
-
     render() {
         const {channel, uid, role, showLive, err} = this.state
 
@@ -113,54 +115,53 @@ export default class App extends Component {
             return (
                 <LiveView onCancel={this.handleCancel} channel={channel} uid={uid} role={role}/>
             )
-        } else {
-            return (
-                    <View style={styles.container} onStartShouldSetResponder={this.containerTouched}>
-
-                        <Text style={styles.welcome}>声网 agora.io</Text>
-
-                        <Text style={styles.textChannelNo}>channel</Text>
-                        <TextInput style={styles.textInput}
-                                   placeholder='Joining in the same channel'
-                                   keyboardType="numeric"
-                                   onChangeText={value => this.setState({channel: value})}
-                                   value={channel}/>
-
-                        <Text style={styles.textUserId}>uid</Text>
-                        <TextInput style={styles.textInput}
-                                   placeholder='Unique id for each member in one channel'
-                                   keyboardType="numeric"
-                                   multiline={false}
-                                   maxLength={6}
-                                   onChangeText={value => this.setState({uid: value})}
-                                   value={uid}/>
-
-                        <Text style={styles.textRole}>role</Text>
-                        <View style={styles.roleWrap}>
-                            <TouchableOpacity
-                                style={leftStyle}
-                                onPress={this.handleSegmentChange.bind(this, 1)}>
-                                <Text style={leftTextStyle}>Broadcaster</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={rightStyle}
-                                onPress={this.handleSegmentChange.bind(this, 2)}>
-                                <Text style={rightTextStyle}>Audience</Text>
-                            </TouchableOpacity>
-                        </View>
-
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={this.handleJoin}>
-                            <Text style={styles.buttonText}>Enter</Text>
-                        </TouchableOpacity>
-
-                        {!!err && <Text style={styles.errorText}>Error： {err}</Text>}
-
-                        <Text style={styles.companyText}>Powered by agora.io inc.</Text>
-                    </View>
-            )
         }
+        return (
+            <View style={styles.container} onStartShouldSetResponder={this.containerTouched}>
+
+                <Text style={styles.welcome}>声网 agora.io</Text>
+
+                <Text style={styles.textChannelNo}>channel</Text>
+                <TextInput style={styles.textInput}
+                           placeholder='Joining in the same channel'
+                           keyboardType="numeric"
+                           onChangeText={value => this.setState({channel: value})}
+                           value={channel}/>
+
+                <Text style={styles.textUserId}>uid</Text>
+                <TextInput style={styles.textInput}
+                           placeholder='Unique id for each member in one channel'
+                           keyboardType="numeric"
+                           multiline={false}
+                           maxLength={6}
+                           onChangeText={value => this.setState({uid: value})}
+                           value={uid}/>
+
+                <Text style={styles.textRole}>role</Text>
+                <View style={styles.roleWrap}>
+                    <TouchableOpacity
+                        style={leftStyle}
+                        onPress={this.handleSegmentChange.bind(this, 1)}>
+                        <Text style={leftTextStyle}>Broadcaster</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={rightStyle}
+                        onPress={this.handleSegmentChange.bind(this, 2)}>
+                        <Text style={rightTextStyle}>Audience</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={this.handleJoin}>
+                    <Text style={styles.buttonText}>Enter</Text>
+                </TouchableOpacity>
+
+                {!!err && <Text style={styles.errorText}>Error： {err}</Text>}
+
+                <Text style={styles.companyText}>Powered by agora.io inc.</Text>
+            </View>
+        )
     }
 }
 

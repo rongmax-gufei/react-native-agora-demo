@@ -1,7 +1,7 @@
 /**
- * Sample React Native App
+ * Agoraio React Native App
  * https://github.com/facebook/react-native
- * @flow
+ * @Learnta Inc.
  */
 
 import React, {Component, PureComponent} from 'react'
@@ -16,6 +16,8 @@ import {
 
 import {RtcEngine, AgoraVideoView, AgoraScreenShareView} from 'react-native-agoraio'
 
+import {Toast} from 'antd-mobile'
+
 import {screenW, screenH} from '../libs/screenUtils'
 
 export default class RNAgoraExample extends Component {
@@ -23,31 +25,37 @@ export default class RNAgoraExample extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            mainUid: 0,
             remotes: [],
             isJoinSuccess: false,
             isBroadcasting: false,
             enableBroadcast: false,
             isSwitchCamera: false,
             isMute: false,
-            isSpeaker: true,
             disableVideo: false,
             isHideButtons: false,
-            visible: false,
-            selectUid: undefined
+            visible: false
         }
     }
 
     componentWillMount() {
         //初始化Agora
         const options = {
-            appid: '858c0ae5d2574d6884a257c912b198c0',//控制台申请
-            channelProfile: 1,//频道模式,1:直播互动
-            videoProfile: 40,//640x480(resolution)、15(fps)、500(kbps)
-            clientRole: this.props.role,//1:Broadcaster,2:Audience，实现双向语音通话设置角色为主播即可
+            appid: '858c0ae5d2574d6884a257c912b198c0', //控制台申请
+            channelProfile: 1, //频道模式,1:直播互动
+            videoProfile: 40, //640x480(resolution)、15(fps)、500(kbps)
+            clientRole: this.props.role, //1:Broadcaster 2:Audience，实现双向语音通话设置角色为主播即可
             swapWidthAndHeight: true,
         }
         // 初始化声网
         RtcEngine.init(options)
+        // 加入房间
+        let uid = parseInt(this.props.uid, 10)
+        this.setState({
+            mainUid: uid,
+        }, () => {
+            RtcEngine.joinChannel(this.props.channel, this.state.mainUid)
+        })
     }
 
     componentDidMount() {
@@ -57,13 +65,10 @@ export default class RNAgoraExample extends Component {
             console.log(version)
         })
 
-        //加入房间
-        RtcEngine.joinChannel(this.props.channel, parseInt(this.props.uid))
-
-        //启用说话者音量提示
+        // 启用说话者音量提示
         RtcEngine.enableAudioVolumeIndication(500, 3)
 
-        //所有的原生通知统一管理
+        // 所有的原生通知统一管理
         RtcEngine.eventEmitter({
             onFirstRemoteVideoDecoded: (data) => {
                 // 远端首帧视频接收解码
@@ -100,7 +105,7 @@ export default class RNAgoraExample extends Component {
             },
             onAudioVolumeIndication: (data) => {
                 // 声音回调
-                console.log(data)
+                // console.log(data)
             },
             onUserJoined: (data) => {
                 // 有人来了
@@ -120,29 +125,40 @@ export default class RNAgoraExample extends Component {
             onError: (data) => {
                 console.log(data)
                 // 错误
-                if (data.err === '17') {
+                if (data.msg === '17') {
                     RtcEngine.leaveChannel()
                     RtcEngine.destroy()
                 }
 
                 const {onCancel} = this.props
-                onCancel(data.err)
+                onCancel(data.msg)
             }
         })
     }
 
     componentWillUnmount() {
-        RtcEngine.leaveChannel()
-        RtcEngine.destroy()
         RtcEngine.removeEmitter()
+    }
+
+    onPressVideo = (suid) => {
+        console.log('suid:' + suid)
+
+        const {remotes} = this.state
+        let newRemotes = [...remotes]
+
+        newRemotes = newRemotes.map(x => (x === suid ? this.state.mainUid : x));
+
+        this.setState({
+            remotes: newRemotes,
+            mainUid: suid
+        })
     }
 
     handlerBroadcast = () => {
         this.setState({
             enableBroadcast: !this.state.enableBroadcast
         }, () => {
-            if (this.state.enableBroadcast)
-                RtcEngine.startBroadcasting()
+            if (this.state.enableBroadcast) RtcEngine.startBroadcasting()
             else {
                 RtcEngine.stopBroadcasting()
                 this.setState({
@@ -150,6 +166,17 @@ export default class RNAgoraExample extends Component {
                 })
             }
         })
+    }
+
+    handlerCancel = () => {
+
+        if (this.state.isBroadcasting) RtcEngine.stopBroadcasting()
+
+        RtcEngine.leaveChannel()
+        RtcEngine.destroy()
+
+        const {onCancel} = this.props
+        onCancel()
     }
 
     handlerSwitchCamera = () => {
@@ -161,14 +188,6 @@ export default class RNAgoraExample extends Component {
             isMute: !this.state.isMute
         }, () => {
             RtcEngine.muteAllRemoteAudioStreams(this.state.isMute)
-        })
-    }
-
-    handlerSetEnableSpeakerphone = () => {
-        this.setState({
-            isSpeaker: !this.state.isSpeaker
-        }, () => {
-            RtcEngine.setDefaultAudioRouteToSpeakerphone(this.state.isSpeaker)
         })
     }
 
@@ -186,71 +205,45 @@ export default class RNAgoraExample extends Component {
         })
     }
 
-    onPressVideo = (uid) => {
-        this.setState({
-            selectUid: uid
-        }, () => {
-            this.setState({
-                visible: true
-            })
-        })
-    }
-
-    handlerCancel = () => {
-
-        if (this.state.isBroadcasting)
-            RtcEngine.stopBroadcasting()
-
-        RtcEngine.leaveChannel()
-        RtcEngine.destroy()
-
-        const {onCancel} = this.props
-        onCancel()
-    }
-
     render() {
-        const {isBroadcasting, isSwitchCamera, isMute, disableVideo, isHideButtons, remotes, isJoinSuccess, visible} = this.state
-
+        const {isBroadcasting, isSwitchCamera, isMute, disableVideo, isHideButtons, remotes, isJoinSuccess, mainUid} = this.state
         if (!isJoinSuccess) {
             return (
-                <View style={{flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center'}}>
+                <View style={styles.prerareView}>
                     <Text>正在创建视频会议...</Text>
                 </View>
             )
         }
-
         return (
             <TouchableOpacity
                 activeOpacity={1}
                 onPress={this.handlerHideButtons}
                 style={styles.container}>
-                {!isBroadcasting && <AgoraVideoView style={styles.localView} showLocalVideo/>}
-                {isBroadcasting && <AgoraScreenShareView style={styles.sharedView} showSharedScreen/>}
+                {!isBroadcasting && <AgoraVideoView style={styles.fullScreenView}
+                                                    renderUid={mainUid}/>}
+                {/*{isBroadcasting && <AgoraScreenShareView style={styles.fullScreenView} showSharedScreen/>}*/}
                 <View style={styles.absView}>
-                    {!visible ?
-                        <View style={styles.videoView}>
-                            {remotes.map((v, k) => {
-                                return (
-                                    <TouchableOpacity
-                                        activeOpacity={1}
-                                        onPress={() => this.onPressVideo.bind(this, v)}
-                                        key={k}>
-                                        <AgoraVideoView
-                                            style={styles.remoteView}
-                                            zOrderMediaOverlay
-                                            remoteUid={v}/>
-                                    </TouchableOpacity>
-                                )
-                            })}
-                        </View> : <View style={styles.videoView}/>
-                    }
+                    <View style={styles.videoView}>
+                        {remotes.map((v, k) => {
+                            return (
+                                <TouchableOpacity
+                                    activeOpacity={1}
+                                    onPress={this.onPressVideo.bind(this, v)}
+                                    key={k}>
+                                    <AgoraVideoView
+                                        style={styles.remoteView}
+                                        zOrderMediaOverlay
+                                        renderUid={v}/>
+                                </TouchableOpacity>
+                            )
+                        })}
+                    </View>
 
                     {!isHideButtons &&
                     <View>
                         <OperateButton
-                            style={{alignSelf: 'center', marginBottom: -10}}
+                            style={styles.operationWrap}
                             onPress={this.handlerCancel}
-                            imgStyle={{width: 55, height: 55}}
                             source={require('../../images/hangup.png')}
                         />
                         <View style={styles.bottomView}>
@@ -274,25 +267,6 @@ export default class RNAgoraExample extends Component {
                     </View>
                     }
                 </View>
-
-                <Modal
-                    visible={visible}
-                    presentationStyle='fullScreen'
-                    animationType='slide'
-                    onRequestClose={() => {
-                    }}>
-                    <TouchableOpacity
-                        activeOpacity={1}
-                        style={{flex: 1}}
-                        onPress={() => this.setState({
-                            visible: false
-                        })}>
-                        <AgoraVideoView
-                            style={{flex: 1}}
-                            zOrderMediaOverlay
-                            remoteUid={this.state.selectUid}/>
-                    </TouchableOpacity>
-                </Modal>
             </TouchableOpacity>
         )
     }
@@ -317,6 +291,12 @@ class OperateButton extends PureComponent {
 }
 
 const styles = StyleSheet.create({
+    prerareView: {
+        flex: 1,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     container: {
         flex: 1,
         backgroundColor: '#F4F4F4'
@@ -327,7 +307,7 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-        justifyContent: 'space-between',
+        justifyContent: 'space-between'
     },
     videoView: {
         padding: 5,
@@ -335,12 +315,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         zIndex: 100
     },
-    localView: {
+    fullScreenView: {
         flex: 1
-    },
-    sharedView: {
-        flex: 1,
-        backgroundColor: 'red'
     },
     remoteView: {
         width: (screenW - 20) / 3,
@@ -351,5 +327,13 @@ const styles = StyleSheet.create({
         padding: 20,
         flexDirection: 'row',
         justifyContent: 'space-around'
+    },
+    operationWrap: {
+        alignSelf: 'center',
+        marginBottom: -10
+    },
+    operationButton: {
+        width: 55,
+        height: 55
     }
 })
