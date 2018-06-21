@@ -10,11 +10,10 @@ import {
     Text,
     View,
     TouchableOpacity,
-    Image,
-    Modal
+    Image
 } from 'react-native'
 
-import {RtcEngine, AgoraVideoView, AgoraScreenShareView} from 'react-native-agoraio'
+import {RtcEngine, AgoraVideoView} from 'react-native-agoraio'
 
 import {Toast} from 'antd-mobile'
 
@@ -29,7 +28,6 @@ export default class RNAgoraExample extends Component {
             remotes: [],
             isJoinSuccess: false,
             isBroadcasting: false,
-            enableBroadcast: false,
             isSwitchCamera: false,
             isMute: false,
             disableVideo: false,
@@ -50,7 +48,7 @@ export default class RNAgoraExample extends Component {
         // 初始化声网
         RtcEngine.init(options)
         // 加入房间
-        let uid = parseInt(this.props.uid, 10)
+        const uid = parseInt(this.props.uid, 10)
         this.setState({
             mainUid: uid,
         }, () => {
@@ -97,8 +95,7 @@ export default class RNAgoraExample extends Component {
                 // 打开美颜
                 RtcEngine.openBeautityFace()
                 // 开启摄像头预览
-                if (isBroadcaster)
-                    RtcEngine.startPreview()
+                if (isBroadcaster) { RtcEngine.startPreview() }
                 this.setState({
                     isJoinSuccess: true
                 })
@@ -115,11 +112,17 @@ export default class RNAgoraExample extends Component {
                 // 屏幕共享广播
                 console.log(data)
                 if (data.code === '1000') {
-                    this.setState({
-                        isBroadcasting: !this.state.isBroadcasting
-                    }, () => {
-                        RtcEngine.enableLocalVideo(this.state.isBroadcasting)
-                    })
+                    Toast.show('屏幕共享开始！')
+                    console.log('屏幕共享开始，停止AgoraKit采集的本地视频流，使用ReplayKit采集的视频流')
+                    RtcEngine.enableLocalVideo(false)
+                } else if (data.code === '-1') {
+                    Toast.show('屏幕共享停止！')
+                    console.log('屏幕共享停止，恢复AgoraKit采集的本地视频流')
+                    RtcEngine.enableLocalVideo(true)
+                } else {
+                    Toast.show('屏幕共享失败！')
+                    console.log('屏幕共享失败，恢复AgoraKit采集的本地视频流')
+                    RtcEngine.enableLocalVideo(true)
                 }
             },
             onError: (data) => {
@@ -156,20 +159,19 @@ export default class RNAgoraExample extends Component {
 
     handlerBroadcast = () => {
         this.setState({
-            enableBroadcast: !this.state.enableBroadcast
+            isBroadcasting: !this.state.isBroadcasting
         }, () => {
-            if (this.state.enableBroadcast) RtcEngine.startBroadcasting()
-            else {
+            if (this.state.isBroadcasting) {
+                RtcEngine.startBroadcasting()
+            } else {
                 RtcEngine.stopBroadcasting()
-                this.setState({
-                    isBroadcasting: false
-                })
+                Toast.show('屏幕共享已停止！')
             }
         })
     }
 
     handlerCancel = () => {
-
+        console.log('handler cancel')
         if (this.state.isBroadcasting) RtcEngine.stopBroadcasting()
 
         RtcEngine.leaveChannel()
@@ -206,7 +208,7 @@ export default class RNAgoraExample extends Component {
     }
 
     render() {
-        const {isBroadcasting, isSwitchCamera, isMute, disableVideo, isHideButtons, remotes, isJoinSuccess, mainUid} = this.state
+        const {isSwitchCamera, isMute, disableVideo, isHideButtons, remotes, isJoinSuccess, mainUid} = this.state
         if (!isJoinSuccess) {
             return (
                 <View style={styles.prerareView}>
@@ -219,13 +221,10 @@ export default class RNAgoraExample extends Component {
                 activeOpacity={1}
                 onPress={this.handlerHideButtons}
                 style={styles.container}>
-                {!isBroadcasting && <AgoraVideoView style={styles.fullScreenView}
-                                                    renderUid={mainUid}/>}
-                {/*{isBroadcasting && <AgoraScreenShareView style={styles.fullScreenView} showSharedScreen/>}*/}
+                <AgoraVideoView style={styles.fullScreenView} renderUid={mainUid}/>
                 <View style={styles.absView}>
                     <View style={styles.videoView}>
-                        {remotes.map((v, k) => {
-                            return (
+                        {remotes.map((v, k) => (
                                 <TouchableOpacity
                                     activeOpacity={1}
                                     onPress={this.onPressVideo.bind(this, v)}
@@ -235,8 +234,7 @@ export default class RNAgoraExample extends Component {
                                         zOrderMediaOverlay
                                         renderUid={v}/>
                                 </TouchableOpacity>
-                            )
-                        })}
+                            ))}
                     </View>
 
                     {!isHideButtons &&
@@ -293,7 +291,7 @@ class OperateButton extends PureComponent {
 const styles = StyleSheet.create({
     prerareView: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#F4F4F4',
         justifyContent: 'center',
         alignItems: 'center'
     },
