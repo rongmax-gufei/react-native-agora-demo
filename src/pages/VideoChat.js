@@ -13,13 +13,16 @@ import {
     Image
 } from 'react-native'
 
+import {Actions} from "react-native-router-flux";
 import {RtcEngine, AgoraVideoView} from 'react-native-agoraio'
 
 import {Toast} from 'antd-mobile'
 
+import {RKey} from "../routes";
+import {Container} from '../component/index'
 import {screenW, screenH} from '../libs/screenUtils'
 
-export default class RNAgoraExample extends Component {
+export default class VideoChat extends Component {
 
     constructor(props) {
         super(props)
@@ -177,8 +180,7 @@ export default class RNAgoraExample extends Component {
         RtcEngine.leaveChannel()
         RtcEngine.destroy()
 
-        const {onCancel} = this.props
-        onCancel()
+        Actions.pop()
     }
 
     handlerSwitchCamera = () => {
@@ -211,9 +213,9 @@ export default class RNAgoraExample extends Component {
         const {isSwitchCamera, isMute, disableVideo, isHideButtons, remotes, isJoinSuccess, mainUid} = this.state
         if (!isJoinSuccess) {
             return (
-                <View style={styles.prerareView}>
+                <Container style={styles.prerareView}>
                     <Text>正在创建视频会议...</Text>
-                </View>
+                </Container>
             )
         }
         return (
@@ -222,7 +224,7 @@ export default class RNAgoraExample extends Component {
                 onPress={this.handlerHideButtons}
                 style={styles.container}>
                 <AgoraVideoView style={styles.fullScreenView} renderUid={mainUid}/>
-                <View style={styles.absView}>
+                <Container style={styles.absView}>
                     <View style={styles.videoView}>
                         {remotes.map((v, k) => (
                                 <TouchableOpacity
@@ -264,7 +266,7 @@ export default class RNAgoraExample extends Component {
                         </View>
                     </View>
                     }
-                </View>
+                </Container>
             </TouchableOpacity>
         )
     }

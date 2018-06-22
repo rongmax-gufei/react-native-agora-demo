@@ -21,6 +21,7 @@
     "react-native-restart": "0.0.6",
     "react-native-router-flux": "^4.0.0-beta.31",
     "react-native-splash-screen": "^3.0.7",
+    "react-native-storage": "^0.2.2",
     "xmldom": "^0.1.27"
   },
   "devDependencies": {

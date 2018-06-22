@@ -1,5 +1,4 @@
-import {Platform} from 'react-native';
-import {Dimensions} from "react-native";
+import {Dimensions, Platform} from 'react-native';
 
 export let screenW = Dimensions.get('window').width;
 export let screenH = Dimensions.get('window').height;
