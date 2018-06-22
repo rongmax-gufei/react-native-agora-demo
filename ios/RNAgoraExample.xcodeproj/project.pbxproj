@@ -19,10 +19,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		182CB16220C9061300F9FF50 /* libRCTAgora.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 182CB15720C905CB00F9FF50 /* libRCTAgora.a */; };
-		18344E8020CA37F2003EF0EF /* Boardcast.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 18344E7D20CA37F2003EF0EF /* Boardcast.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		18344E8320CA37F2003EF0EF /* BoardcastSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 18344E7F20CA37F2003EF0EF /* BoardcastSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1837FAC520C94B7700DDC4ED /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1837FAC420C94B5F00DDC4ED /* libSplashScreen.a */; };
 		184CAC6B20C7BED400093E3E /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
+		187E040220DCF19400EA63E8 /* Boardcast.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 18344E7D20CA37F2003EF0EF /* Boardcast.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		187E040520DCF19400EA63E8 /* BoardcastSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 18344E7F20CA37F2003EF0EF /* BoardcastSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		18855CC9202D6D6A0081BAF4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18855CC8202D6D6A0081BAF4 /* Launch Screen.storyboard */; };
 		18AA9E4520D11CE00045D802 /* videoprp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AA9E4420D11CDF0045D802 /* videoprp.framework */; };
 		18C32F0C202D4C260052DF95 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C32EE7202D4C260052DF95 /* AssetsLibrary.framework */; };
@@ -176,20 +176,6 @@
 			remoteGlobalIDString = 182CB01220C8CE7B00F9FF50;
 			remoteInfo = BoardcastSetupUI;
 		};
-		18344E8120CA37F2003EF0EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 182CB00720C8CE7B00F9FF50;
-			remoteInfo = Boardcast;
-		};
-		18344E8420CA37F2003EF0EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 182CB01120C8CE7B00F9FF50;
-			remoteInfo = BoardcastSetupUI;
-		};
 		1837FAC320C94B5F00DDC4ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1837FA9B20C94B5F00DDC4ED /* SplashScreen.xcodeproj */;
@@ -210,6 +196,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = EBF21BFA1FC4989A0052F4D5;
 			remoteInfo = "jsinspector-tvOS";
+		};
+		187E040320DCF19400EA63E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 182CB00720C8CE7B00F9FF50;
+			remoteInfo = Boardcast;
+		};
+		187E040620DCF19400EA63E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 182CB15020C905CB00F9FF50 /* RCTAgora.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 182CB01120C8CE7B00F9FF50;
+			remoteInfo = BoardcastSetupUI;
 		};
 		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -333,14 +333,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		184CAC8E20C7C89500093E3E /* Embed App Extensions */ = {
+		187E040820DCF19400EA63E8 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				18344E8320CA37F2003EF0EF /* BoardcastSetupUI.appex in Embed App Extensions */,
-				18344E8020CA37F2003EF0EF /* Boardcast.appex in Embed App Extensions */,
+				187E040520DCF19400EA63E8 /* BoardcastSetupUI.appex in Embed App Extensions */,
+				187E040220DCF19400EA63E8 /* Boardcast.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,13 +643,13 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				184CAC8E20C7C89500093E3E /* Embed App Extensions */,
+				187E040820DCF19400EA63E8 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				18344E8220CA37F2003EF0EF /* PBXTargetDependency */,
-				18344E8520CA37F2003EF0EF /* PBXTargetDependency */,
+				187E040420DCF19400EA63E8 /* PBXTargetDependency */,
+				187E040720DCF19400EA63E8 /* PBXTargetDependency */,
 			);
 			name = RNAgoraExample;
 			productName = "Hello World";
@@ -1069,15 +1069,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		18344E8220CA37F2003EF0EF /* PBXTargetDependency */ = {
+		187E040420DCF19400EA63E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Boardcast;
-			targetProxy = 18344E8120CA37F2003EF0EF /* PBXContainerItemProxy */;
+			targetProxy = 187E040320DCF19400EA63E8 /* PBXContainerItemProxy */;
 		};
-		18344E8520CA37F2003EF0EF /* PBXTargetDependency */ = {
+		187E040720DCF19400EA63E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BoardcastSetupUI;
-			targetProxy = 18344E8420CA37F2003EF0EF /* PBXContainerItemProxy */;
+			targetProxy = 187E040620DCF19400EA63E8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -13,6 +13,8 @@ import {
     Image
 } from 'react-native'
 
+import * as mobx from 'mobx'
+import {observer, inject} from 'mobx-react/native'
 import {Actions} from "react-native-router-flux";
 import {RtcEngine, AgoraVideoView} from 'react-native-agoraio'
 
@@ -22,6 +24,8 @@ import {RKey} from "../routes";
 import {Container} from '../component/index'
 import {screenW, screenH} from '../libs/screenUtils'
 
+@inject('UserInfoStore')
+@observer
 export default class VideoChat extends Component {
 
     constructor(props) {
@@ -40,22 +44,24 @@ export default class VideoChat extends Component {
     }
 
     componentWillMount() {
+        const {channel, uid, role} = this.props.UserInfoStore
         //初始化Agora
         const options = {
             appid: '858c0ae5d2574d6884a257c912b198c0', //控制台申请
             channelProfile: 1, //频道模式,1:直播互动
             videoProfile: 40, //640x480(resolution)、15(fps)、500(kbps)
-            clientRole: this.props.role, //1:Broadcaster 2:Audience，实现双向语音通话设置角色为主播即可
+            clientRole: role, //1:Broadcaster 2:Audience，实现双向语音通话设置角色为主播即可
             swapWidthAndHeight: true,
         }
         // 初始化声网
         RtcEngine.init(options)
+        console.log('channel, uid', channel + ':' + uid)
         // 加入房间
-        const uid = parseInt(this.props.uid, 10)
+        const uuid = parseInt(uid, 10)
         this.setState({
-            mainUid: uid,
+            mainUid: uuid,
         }, () => {
-            RtcEngine.joinChannel(this.props.channel, this.state.mainUid)
+            RtcEngine.joinChannel(channel, this.state.mainUid)
         })
     }
 
@@ -135,9 +141,6 @@ export default class VideoChat extends Component {
                     RtcEngine.leaveChannel()
                     RtcEngine.destroy()
                 }
-
-                const {onCancel} = this.props
-                onCancel(data.msg)
             }
         })
     }
@@ -213,9 +216,9 @@ export default class VideoChat extends Component {
         const {isSwitchCamera, isMute, disableVideo, isHideButtons, remotes, isJoinSuccess, mainUid} = this.state
         if (!isJoinSuccess) {
             return (
-                <Container style={styles.prerareView}>
+                <View style={styles.prerareView}>
                     <Text>正在创建视频会议...</Text>
-                </Container>
+                </View>
             )
         }
         return (
@@ -224,7 +227,7 @@ export default class VideoChat extends Component {
                 onPress={this.handlerHideButtons}
                 style={styles.container}>
                 <AgoraVideoView style={styles.fullScreenView} renderUid={mainUid}/>
-                <Container style={styles.absView}>
+                <View style={styles.absView}>
                     <View style={styles.videoView}>
                         {remotes.map((v, k) => (
                                 <TouchableOpacity
@@ -266,7 +269,7 @@ export default class VideoChat extends Component {
                         </View>
                     </View>
                     }
-                </Container>
+                </View>
             </TouchableOpacity>
         )
     }

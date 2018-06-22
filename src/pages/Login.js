@@ -15,6 +15,8 @@ import {
     View,
 } from 'react-native'
 
+import * as mobx from 'mobx'
+import {observer, inject} from 'mobx-react/native'
 import {Actions} from 'react-native-router-flux'
 import SplashScreen from 'react-native-splash-screen'
 import RNRestart from 'react-native-restart'
@@ -50,6 +52,8 @@ const errorHandler = (e, isFatal) => {
 
 setJSExceptionHandler(errorHandler)
 
+@inject('UserInfoStore')
+@observer
 export default class App extends Component {
 
     constructor(props) {
@@ -85,6 +89,10 @@ export default class App extends Component {
                 err: 'uid is empty'
             })
         } else {
+            const {setChannel, setUid, setRole} = this.props.UserInfoStore
+            setChannel(this.state.channel)
+            setUid(this.state.uid)
+            setRole(this.state.role)
             Actions.push(RKey.VIDEO_CHAT)
         }
     }
@@ -105,49 +113,51 @@ export default class App extends Component {
         const rightTextStyle = this.isBroadcaster ? styles.textRoleUnSelected : styles.textRoleSelected
 
         return (
-            <Container style={styles.container} onStartShouldSetResponder={this.containerTouched}>
+            <Container>
+                <View style={styles.container} onStartShouldSetResponder={this.containerTouched}>
 
-                <Text style={styles.welcome}>声网 agora.io</Text>
+                    <Text style={styles.welcome}>声网 agora.io</Text>
 
-                <Text style={styles.textChannelNo}>channel</Text>
-                <TextInput style={styles.textInput}
-                           placeholder='Joining in the same channel'
-                           keyboardType="numeric"
-                           onChangeText={value => this.setState({channel: value})}
-                           value={channel}/>
+                    <Text style={styles.textChannelNo}>channel</Text>
+                    <TextInput style={styles.textInput}
+                               placeholder='Joining in the same channel'
+                               keyboardType="numeric"
+                               onChangeText={value => this.setState({channel: value})}
+                               value={channel}/>
 
-                <Text style={styles.textUserId}>uid</Text>
-                <TextInput style={styles.textInput}
-                           placeholder='Unique id for each member in one channel'
-                           keyboardType="numeric"
-                           multiline={false}
-                           maxLength={6}
-                           onChangeText={value => this.setState({uid: value})}
-                           value={uid}/>
+                    <Text style={styles.textUserId}>uid</Text>
+                    <TextInput style={styles.textInput}
+                               placeholder='Unique id for each member in one channel'
+                               keyboardType="numeric"
+                               multiline={false}
+                               maxLength={6}
+                               onChangeText={value => this.setState({uid: value})}
+                               value={uid}/>
 
-                <Text style={styles.textRole}>role</Text>
-                <View style={styles.roleWrap}>
+                    <Text style={styles.textRole}>role</Text>
+                    <View style={styles.roleWrap}>
+                        <TouchableOpacity
+                            style={leftStyle}
+                            onPress={this.handleSegmentChange.bind(this, 1)}>
+                            <Text style={leftTextStyle}>Broadcaster</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={rightStyle}
+                            onPress={this.handleSegmentChange.bind(this, 2)}>
+                            <Text style={rightTextStyle}>Audience</Text>
+                        </TouchableOpacity>
+                    </View>
+
                     <TouchableOpacity
-                        style={leftStyle}
-                        onPress={this.handleSegmentChange.bind(this, 1)}>
-                        <Text style={leftTextStyle}>Broadcaster</Text>
+                        style={styles.button}
+                        onPress={this.handleJoin}>
+                        <Text style={styles.buttonText}>Enter</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity
-                        style={rightStyle}
-                        onPress={this.handleSegmentChange.bind(this, 2)}>
-                        <Text style={rightTextStyle}>Audience</Text>
-                    </TouchableOpacity>
+
+                    {!!err && <Text style={styles.errorText}>Error： {err}</Text>}
+
+                    <Text style={styles.companyText}>Powered by agora.io inc.</Text>
                 </View>
-
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={this.handleJoin}>
-                    <Text style={styles.buttonText}>Enter</Text>
-                </TouchableOpacity>
-
-                {!!err && <Text style={styles.errorText}>Error： {err}</Text>}
-
-                <Text style={styles.companyText}>Powered by agora.io inc.</Text>
             </Container>
         )
     }
