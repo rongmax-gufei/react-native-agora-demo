@@ -13,7 +13,6 @@ import {
     Image
 } from 'react-native'
 
-import * as mobx from 'mobx'
 import {observer, inject} from 'mobx-react/native'
 import {Actions} from "react-native-router-flux";
 import {RtcEngine, AgoraVideoView} from 'react-native-agoraio'
@@ -21,10 +20,9 @@ import {RtcEngine, AgoraVideoView} from 'react-native-agoraio'
 import {Toast} from 'antd-mobile'
 
 import {RKey} from "../routes";
-import {Container} from '../component/index'
 import {screenW, screenH} from '../libs/screenUtils'
 
-@inject('UserInfoStore')
+@inject('UserInfoStore', 'BroadcastStore')
 @observer
 export default class VideoChat extends Component {
 
@@ -34,7 +32,6 @@ export default class VideoChat extends Component {
             mainUid: 0,
             remotes: [],
             isJoinSuccess: false,
-            isBroadcasting: false,
             isSwitchCamera: false,
             isMute: false,
             disableVideo: false,
@@ -104,7 +101,9 @@ export default class VideoChat extends Component {
                 // 打开美颜
                 RtcEngine.openBeautityFace()
                 // 开启摄像头预览
-                if (isBroadcaster) { RtcEngine.startPreview() }
+                if (isBroadcaster) {
+                    RtcEngine.startPreview()
+                }
                 this.setState({
                     isJoinSuccess: true
                 })
@@ -120,16 +119,20 @@ export default class VideoChat extends Component {
             onBoardcast: (data) => {
                 // 屏幕共享广播
                 console.log(data)
+                const {updateBroadcast} = this.props.BroadcastStore
                 if (data.code === '1000') {
                     Toast.show('屏幕共享开始！')
+                    updateBroadcast(true)
                     console.log('屏幕共享开始，停止AgoraKit采集的本地视频流，使用ReplayKit采集的视频流')
                     RtcEngine.enableLocalVideo(false)
                 } else if (data.code === '-1') {
                     Toast.show('屏幕共享停止！')
+                    updateBroadcast(false)
                     console.log('屏幕共享停止，恢复AgoraKit采集的本地视频流')
                     RtcEngine.enableLocalVideo(true)
                 } else {
                     Toast.show('屏幕共享失败！')
+                    updateBroadcast(false)
                     console.log('屏幕共享失败，恢复AgoraKit采集的本地视频流')
                     RtcEngine.enableLocalVideo(true)
                 }
@@ -146,7 +149,9 @@ export default class VideoChat extends Component {
     }
 
     componentWillUnmount() {
+        RtcEngine.leaveChannel()
         RtcEngine.removeEmitter()
+        RtcEngine.destroy()
     }
 
     onPressVideo = (suid) => {
@@ -164,25 +169,10 @@ export default class VideoChat extends Component {
     }
 
     handlerBroadcast = () => {
-        this.setState({
-            isBroadcasting: !this.state.isBroadcasting
-        }, () => {
-            if (this.state.isBroadcasting) {
-                RtcEngine.startBroadcasting()
-            } else {
-                RtcEngine.stopBroadcasting()
-                Toast.show('屏幕共享已停止！')
-            }
-        })
+        Actions.push(RKey.SCREEN_SHARE)
     }
 
     handlerCancel = () => {
-        console.log('handler cancel')
-        if (this.state.isBroadcasting) RtcEngine.stopBroadcasting()
-
-        RtcEngine.leaveChannel()
-        RtcEngine.destroy()
-
         Actions.pop()
     }
 
@@ -230,16 +220,16 @@ export default class VideoChat extends Component {
                 <View style={styles.absView}>
                     <View style={styles.videoView}>
                         {remotes.map((v, k) => (
-                                <TouchableOpacity
-                                    activeOpacity={1}
-                                    onPress={this.onPressVideo.bind(this, v)}
-                                    key={k}>
-                                    <AgoraVideoView
-                                        style={styles.remoteView}
-                                        zOrderMediaOverlay
-                                        renderUid={v}/>
-                                </TouchableOpacity>
-                            ))}
+                            <TouchableOpacity
+                                activeOpacity={1}
+                                onPress={this.onPressVideo.bind(this, v)}
+                                key={k}>
+                                <AgoraVideoView
+                                    style={styles.remoteView}
+                                    zOrderMediaOverlay
+                                    renderUid={v}/>
+                            </TouchableOpacity>
+                        ))}
                     </View>
 
                     {!isHideButtons &&
@@ -340,3 +330,4 @@ const styles = StyleSheet.create({
         height: 55
     }
 })
+
