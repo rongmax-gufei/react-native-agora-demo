@@ -9,3 +9,6 @@
 Ios/build
 /android/app/build
 .idea/
+*.xcuserstate
+*.xcuserstate
+ios/RNAgoraExample.xcodeproj/project.xcworkspace/xcuserdata/apple.xcuserdatad/UserInterfaceState.xcuserstate
