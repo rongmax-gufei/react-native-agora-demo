@@ -88,8 +88,6 @@ export default class RNAgoraExample extends Component {
                 // 加入房间成功
                 console.log(data);
                 const {isBroadcaster} = this.state;
-                // 打开美颜
-                RtcEngine.openBeautityFace();
                 // 开启摄像头预览
                 if (isBroadcaster)
                     RtcEngine.startPreview();
